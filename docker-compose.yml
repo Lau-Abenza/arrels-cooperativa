@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: arrels_postgres
+    environment:
+      POSTGRES_USER: arrels
+      POSTGRES_PASSWORD: arrels1234
+      POSTGRES_DB: arrels_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/postgres_data
+
+  mongodb:
+    image: mongo:7
+    container_name: arrels_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/arrels_db
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: arrels_mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./hardware/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+volumes:
+  postgres_data:
+  mongodb:
+  
