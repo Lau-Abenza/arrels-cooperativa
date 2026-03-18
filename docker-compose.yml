@@ -5,12 +5,13 @@ services:
     container_name: arrels_postgres
     environment:
       POSTGRES_USER: arrels
-      POSTGRES_PASSWORD: arrels1234
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: arrels_db
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/postgres_data
+      - postgres_data:/var/lib/postgresql/data
 
   mongodb:
     image: mongo:7
