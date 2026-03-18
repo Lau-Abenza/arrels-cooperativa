@@ -26,6 +26,7 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 from database import Base
 from models.usuario import Usuario
+from models.parcela import Parcela
 
 target_metadata = Base.metadata
 
