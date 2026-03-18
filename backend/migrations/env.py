@@ -27,6 +27,8 @@ if config.config_file_name is not None:
 from database import Base
 from models.usuario import Usuario
 from models.parcela import Parcela
+from models.producto import Producto
+from models.venta import Venta, LineaVenta
 
 target_metadata = Base.metadata
 

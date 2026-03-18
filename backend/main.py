@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from routers import auth, parcelas
+from routers import auth, parcelas, productos, ventas
 import os
 
 load_dotenv()
@@ -13,6 +13,8 @@ app = FastAPI(
 
 app.include_router(auth.router)
 app.include_router(parcelas.router)
+app.include_router(productos.router)
+app.include_router(ventas.router)
 
 @app.get("/")
 def root():
