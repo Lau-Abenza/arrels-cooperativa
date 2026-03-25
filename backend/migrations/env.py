@@ -29,7 +29,9 @@ from models.usuario import Usuario
 from models.parcela import Parcela
 from models.producto import Producto
 from models.venta import Venta, LineaVenta
-from models.fichajes import Fichaje
+from models.fichaje import Fichaje
+from models.apero import Apero
+from models.alquiler import Alquiler
 
 target_metadata = Base.metadata
 
