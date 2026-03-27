@@ -9,6 +9,7 @@ import Parcelas from './pages/Parcelas'
 import Productos from './pages/Productos'
 import Ventas from './pages/Ventas'
 import Fichajes from './pages/Fichajes'
+import Alquileres from './pages/Alquileres'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -50,6 +51,11 @@ function App() {
         <Route path="/fichajes" element={
           <RutaProtegida>
             <Fichajes />
+          </RutaProtegida>
+        } />
+        <Route path="/alquileres" element={
+          <RutaProtegida>
+            <Alquileres />
           </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />
