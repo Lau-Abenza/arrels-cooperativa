@@ -6,6 +6,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Parcelas from './pages/Parcelas'
+import Productos from './pages/Productos'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -30,9 +31,14 @@ function App() {
           </RutaProtegida>
         } />
         <Route path="/parcelas" element={
-        <RutaProtegida>
-          <Parcelas />
-        </RutaProtegida>
+          <RutaProtegida>
+            <Parcelas />
+          </RutaProtegida>
+        } />
+        <Route path="/productos" element={
+          <RutaProtegida>
+            <Productos />
+          </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
