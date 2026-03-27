@@ -10,6 +10,10 @@ import Productos from './pages/Productos'
 import Ventas from './pages/Ventas'
 import Fichajes from './pages/Fichajes'
 import Alquileres from './pages/Alquileres'
+import Aportaciones from './pages/Aportaciones'
+import Sensores from './pages/Sensores'
+import Mensajes from './pages/Mensajes'
+import Planes_Accion from '/pages/Planes_Accion'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -56,6 +60,26 @@ function App() {
         <Route path="/alquileres" element={
           <RutaProtegida>
             <Alquileres />
+          </RutaProtegida>
+        } />
+        <Route path="/aportaciones" element={
+          <RutaProtegida>
+            <Aportaciones />
+          </RutaProtegida>
+        } />
+        <Route path="/sensores" element={
+          <RutaProtegida>
+            <Sensores />
+          </RutaProtegida>
+        } />
+        <Route path="/mensajes" element={
+          <RutaProtegida>
+            <Mensajes />
+          </RutaProtegida>
+        } />
+        <Route path="/planes_accion" element={
+          <RutaProtegida>
+            <Planes_Accion />
           </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />
