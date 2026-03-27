@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Parcelas from './pages/Parcelas'
 import Productos from './pages/Productos'
+import Ventas from './pages/Ventas'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -38,6 +39,11 @@ function App() {
         <Route path="/productos" element={
           <RutaProtegida>
             <Productos />
+          </RutaProtegida>
+        } />
+        <Route path="/ventas" element={
+          <RutaProtegida>
+            <Ventas />
           </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />
