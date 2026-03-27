@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from routers import auth, parcelas, productos, ventas, fichajes, alquileres, aportaciones
+from routers import (auth, parcelas, productos, ventas,
+                     fichajes, alquileres, aportaciones,
+                     mensajes, planes_accion, sync, sensores)
 import os
 
 load_dotenv()
@@ -18,6 +20,10 @@ app.include_router(ventas.router)
 app.include_router(fichajes.router)
 app.include_router(alquileres.router)
 app.include_router(aportaciones.router)
+app.include_router(mensajes.router)
+app.include_router(planes_accion.router)
+app.include_router(sync.router)
+app.include_router(sensores.router)
 
 @app.get("/")
 def root():
