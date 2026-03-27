@@ -32,6 +32,7 @@ from models.venta import Venta, LineaVenta
 from models.fichaje import Fichaje
 from models.apero import Apero
 from models.alquiler import Alquiler
+from models.aportacion import Aportacion
 
 target_metadata = Base.metadata
 
