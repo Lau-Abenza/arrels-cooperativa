@@ -1,14 +1,8 @@
 import { useAuth } from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import Layout from '../components/Layout'
 
 export default function Dashboard() {
-  const { usuario, logout } = useAuth()
-  const navigate = useNavigate()
-
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
+  const { usuario } = useAuth()
 
   const rolColor: Record<string, string> = {
     admin:       'bg-red-100 text-red-700',
@@ -20,42 +14,30 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f4f1ea]">
-      {/* Header */}
-      <header className="bg-[#1c2b1a] text-white px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <h1 className="text-xl font-bold text-[#4a7c59]">ARRELS</h1>
-          <span className="text-[#6b8c5e] text-sm">Cooperativa Agrícola</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-[#8ab89a]">
-            {usuario?.nombre}
-          </span>
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${rolColor[usuario?.rol || ''] || 'bg-slate-100 text-slate-700'}`}>
+    <Layout>
+      <div className="p-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-2xl font-bold text-[#1c2b1a]">
+              Bienvenida, {usuario?.nombre?.split(' ')[0]} 👋
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              Panel de control · Arrels Cooperativa
+            </p>
+          </div>
+          <span className={`text-sm font-semibold px-3 py-1.5 rounded-full ${rolColor[usuario?.rol || '']}`}>
             {usuario?.rol}
           </span>
-          <button
-            onClick={handleLogout}
-            className="text-sm text-[#8ab89a] hover:text-white transition-colors"
-          >
-            Salir
-          </button>
         </div>
-      </header>
 
-      {/* Contenido */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
-        <h2 className="text-2xl font-bold text-[#1c2b1a] mb-6">
-          Bienvenida, {usuario?.nombre?.split(' ')[0]} 👋
-        </h2>
-
-        {/* KPI cards placeholder */}
+        {/* KPI cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Parcelas', valor: '—', color: 'bg-[#4a7c59]' },
-            { label: 'Productos', valor: '—', color: 'bg-[#2471a3]' },
+            { label: 'Parcelas',    valor: '—', color: 'bg-[#4a7c59]' },
+            { label: 'Productos',   valor: '—', color: 'bg-[#2471a3]' },
             { label: 'Ventas hoy', valor: '—', color: 'bg-[#e07a30]' },
-            { label: 'Alertas', valor: '—', color: 'bg-[#c0392b]' },
+            { label: 'Alertas',    valor: '—', color: 'bg-[#c0392b]' },
           ].map(({ label, valor, color }) => (
             <div key={label} className="bg-white rounded-2xl shadow-sm overflow-hidden">
               <div className={`${color} h-1.5`} />
@@ -67,32 +49,14 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* Módulos disponibles según rol */}
+        {/* Actividad reciente placeholder */}
         <div className="bg-white rounded-2xl shadow-sm p-6">
-          <h3 className="font-semibold text-slate-700 mb-4">Módulos disponibles</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {[
-              { label: '🌿 Parcelas', roles: ['admin','director','ingeniero','trabajador'] },
-              { label: '🛒 Tienda', roles: ['admin','trabajador'] },
-              { label: '🚜 Alquileres', roles: ['admin','trabajador','socio'] },
-              { label: '⏱ Fichajes', roles: ['admin','trabajador'] },
-              { label: '⚖️ Aportaciones', roles: ['admin','trabajador','director'] },
-              { label: '📡 Sensores IoT', roles: ['admin','ingeniero','director'] },
-            ]
-            .filter(m => m.roles.includes(usuario?.rol || ''))
-            .map(({ label }) => (
-              <button
-                key={label}
-                className="text-left px-4 py-3 rounded-xl border border-slate-200
-                           hover:border-[#4a7c59] hover:bg-[#eef4f0]
-                           transition-all text-sm font-medium text-slate-700"
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <h3 className="font-semibold text-slate-700 mb-4">Actividad reciente</h3>
+          <p className="text-slate-400 text-sm">
+            Los datos se cargarán aquí cuando conectemos los módulos.
+          </p>
         </div>
-      </main>
-    </div>
+      </div>
+    </Layout>
   )
 }

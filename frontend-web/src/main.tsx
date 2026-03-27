@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Parcelas from './pages/Parcelas'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -27,6 +28,11 @@ function App() {
           <RutaProtegida>
             <Dashboard />
           </RutaProtegida>
+        } />
+        <Route path="/parcelas" element={
+        <RutaProtegida>
+          <Parcelas />
+        </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
