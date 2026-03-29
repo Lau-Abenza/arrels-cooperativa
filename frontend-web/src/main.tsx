@@ -14,6 +14,7 @@ import Aportaciones from './pages/Aportaciones'
 import Sensores from './pages/Sensores'
 import Mensajes from './pages/Mensajes'
 import PlanesAccion from './pages/PlanesAccion'
+import Campo from './pages/Campo'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -80,6 +81,11 @@ function App() {
         <Route path="/planes_accion" element={
           <RutaProtegida>
             <PlanesAccion />
+          </RutaProtegida>
+        } />
+        <Route path="/campo" element={
+          <RutaProtegida>
+            <Campo />
           </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />

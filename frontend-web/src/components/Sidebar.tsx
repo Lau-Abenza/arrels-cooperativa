@@ -20,6 +20,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Mensajes',     icon: '💬', path: '/mensajes',     roles: ['admin','ingeniero','socio'] },
   { label: 'Planes de Acción', icon: '📋', path: '/planes_accion', roles: ['admin','ingeniero'] },
   { label: 'Usuarios',     icon: '👥', path: '/usuarios',     roles: ['admin'] },
+  { label: 'App de Campo', icon: '🌾', path: '/campo', roles: ['admin','ingeniero','socio'] },
 ]
 
 export default function Sidebar() {
