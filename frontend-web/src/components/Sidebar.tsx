@@ -18,6 +18,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Aportaciones', icon: '⚖️', path: '/aportaciones', roles: ['admin','trabajador','director'] },
   { label: 'Sensores IoT', icon: '📡', path: '/sensores',     roles: ['admin','ingeniero','director'] },
   { label: 'Mensajes',     icon: '💬', path: '/mensajes',     roles: ['admin','ingeniero','socio'] },
+  { label: 'Planes de Acción', icon: '📋', path: '/planes_accion', roles: ['admin','ingeniero'] },
   { label: 'Usuarios',     icon: '👥', path: '/usuarios',     roles: ['admin'] },
 ]
 

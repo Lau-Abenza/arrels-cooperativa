@@ -13,7 +13,7 @@ import Alquileres from './pages/Alquileres'
 import Aportaciones from './pages/Aportaciones'
 import Sensores from './pages/Sensores'
 import Mensajes from './pages/Mensajes'
-import Planes_Accion from '/pages/Planes_Accion'
+import PlanesAccion from './pages/PlanesAccion'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -79,7 +79,7 @@ function App() {
         } />
         <Route path="/planes_accion" element={
           <RutaProtegida>
-            <Planes_Accion />
+            <PlanesAccion />
           </RutaProtegida>
         } />
         <Route path="*" element={<Navigate to="/login" replace />} />
