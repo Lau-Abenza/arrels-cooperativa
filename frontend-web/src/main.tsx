@@ -15,6 +15,7 @@ import Sensores from './pages/Sensores'
 import Mensajes from './pages/Mensajes'
 import PlanesAccion from './pages/PlanesAccion'
 import Campo from './pages/Campo'
+import Usuarios from './pages/Usuarios'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -88,6 +89,11 @@ function App() {
             <Campo />
           </RutaProtegida>
         } />
+        <Route path="/usuarios" element={
+          <RutaProtegida>
+            <Usuarios />
+          </RutaProtegida>} 
+        />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>

@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models.usuario import Usuario
 from schemas.usuario import UsuarioCreate, UsuarioOut, LoginIn, TokenOut
-from auth import hash_password, verify_password, create_token
+from auth import hash_password, verify_password, create_token, require_role
 
 router = APIRouter(prefix="/auth", tags=["Autenticación"])
 
@@ -68,3 +68,17 @@ def token(
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
     token = create_token({"sub": usuario.email, "rol": usuario.rol, "nombre": usuario.nombre})
     return {"access_token": token, "token_type": "bearer"}
+
+@router.get("/usuarios")
+def listar_usuarios(
+    db: Session = Depends(get_db),
+    usuario = Depends(require_role("admin", "director"))
+):
+    usuarios = db.query(Usuario).all()
+    return [{
+        "id": u.id,
+        "nombre": u.nombre,
+        "email": u.email,
+        "rol": u.rol,
+        "activo": u.activo
+    } for u in usuarios]
