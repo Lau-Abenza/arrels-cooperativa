@@ -16,6 +16,9 @@ import Mensajes from './pages/Mensajes'
 import PlanesAccion from './pages/PlanesAccion'
 import Campo from './pages/Campo'
 import Usuarios from './pages/Usuarios'
+import Inicio from './pages/Inicio'
+import TiendaPublica from './pages/TiendaPublica'
+import Blog from './pages/Blog'
 import './index.css'
 
 const queryClient = new QueryClient()
@@ -94,7 +97,16 @@ function App() {
             <Usuarios />
           </RutaProtegida>} 
         />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="/inicio" element={
+          <Inicio />} 
+        />
+        <Route path="/tienda" element={
+          <TiendaPublica />} 
+        />
+        <Route path="/blog" element={
+          <Blog />} 
+        />
+        <Route path="*" element={<Navigate to="/inicio" replace />} />
       </Routes>
     </BrowserRouter>
   )
