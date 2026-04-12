@@ -20,7 +20,7 @@ export default function Dashboard() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold text-[#1c2b1a]">
-              Bienvenida, {usuario?.nombre?.split(' ')[0]} 👋
+              Bienvenid@, {usuario?.nombre?.split(' ')[0]} 👋
             </h2>
             <p className="text-slate-500 text-sm mt-1">
               Panel de control · Arrels Cooperativa

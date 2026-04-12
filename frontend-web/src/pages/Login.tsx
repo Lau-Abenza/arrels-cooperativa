@@ -98,7 +98,7 @@ export default function Login() {
         </div>
 
         <p className="text-center text-[#6b8c5e] text-xs mt-6">
-          Arrels © 2025 · Cooperativa Agrícola Digital
+          Arrels © 2026 · Cooperativa Agrícola Digital
         </p>
       </div>
     </div>

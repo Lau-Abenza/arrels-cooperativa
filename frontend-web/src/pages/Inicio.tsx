@@ -47,7 +47,7 @@ export default function Inicio() {
             { valor: '+50', label: 'Socios agricultores' },
             { valor: '+200ha', label: 'De tierra cultivada' },
             { valor: '100%', label: 'Producto local' },
-            { valor: '2025', label: 'Cooperativa digital' },
+            { valor: '2026', label: 'Cooperativa digital' },
           ].map(({ valor, label }) => (
             <div key={label}>
               <p className="text-3xl font-bold">{valor}</p>
@@ -67,6 +67,24 @@ export default function Inicio() {
               { emoji: '🫒', nombre: 'Aceite de Oliva Virgen Extra', desc: 'Variedad Blanqueta, primera extracción en frío', precio: '8.50€/botella' },
               { emoji: '🌰', nombre: 'Almendras Marcona Crudas', desc: 'Calibre extra, sin sal ni tostado', precio: '12€/kg' },
               { emoji: '🍯', nombre: 'Miel de Romero Artesanal', desc: 'Producción limitada, sin pasteurizar', precio: '7.80€/tarro' },
+              { emoji: '🍇', nombre: 'Uva de Mesa', desc: 'Variedad Aledo, última variedad del año', precio: '2.25€/kg' },
+              { emoji: '🍅', nombre: 'Tomate', desc: 'Variedad Raf', precio: '5.15€/kg' },
+              { emoji: '🫒', nombre: 'Aceitunas verdes', desc: 'Variedad Picual', precio: '2.35€/tarro' },
+              { emoji: '🍊', nombre: 'Naranja', desc: 'Variedad Navelina', precio: '4.35€/kg' },
+              { emoji: '🍋', nombre: 'Limón', desc: 'Variedad Génova', precio: '5.25€/kg' },
+              { emoji: '🍈', nombre: 'Melón', desc: 'Variedad Galia', precio: '6.35€/kg' },
+              { emoji: '🍉', nombre: 'Sandía', desc: 'Variedad Jubilee', precio: '7.15€/kg' },
+              { emoji: '🥜', nombre: 'Cacahuete', desc: 'Variedad Virginia', precio: '5.75€/kg' },
+              { emoji: '🍒', nombre: 'Cereza', desc: 'Variedad Nimba', precio: '5.35€/kg' },
+              { emoji: '🌰', nombre: 'Avellana', desc: 'Variedad Negret', precio: '4.15€/kg' },
+              { emoji: '🍎', nombre: 'Manzana', desc: 'Variedad Gala', precio: '4.55€/kg' },
+              { emoji: '🫛', nombre: 'Guisante', desc: 'Variedad Verde', precio: '3.35€/kg' },
+              { emoji: '🫘', nombre: 'Judías', desc: 'Variedad Blancas', precio: '2.45€/kg' },
+              { emoji: '🧅', nombre: 'Cebolla', desc: 'Variedad Amarilla', precio: '3.55€/kg' },
+              { emoji: '🍆', nombre: 'Berenjena', desc: 'Variedad Black Bell', precio: '5.35€/kg' },
+              { emoji: '🥕', nombre: 'Zanahoria', desc: 'Variedad Nantes', precio: '3.15€/kg' },
+              { emoji: '🥬', nombre: 'Lechuga', desc: 'Variedad Romana', precio: '2.45€/kg' },
+              { emoji: '🥑', nombre: 'Aguacate', desc: 'Variedad Hass', precio: '6.35€/kg' },              
             ].map(({ emoji, nombre, desc, precio }) => (
               <div key={nombre} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100
                                            hover:shadow-md transition-shadow">
@@ -112,7 +130,7 @@ export default function Inicio() {
             {[
               { num: '01', titulo: 'El agricultor cultiva', desc: 'Nuestros socios trabajan sus parcelas con técnicas tradicionales y apoyo tecnológico.' },
               { num: '02', titulo: 'La cooperativa gestiona', desc: 'Recogemos, clasificamos y preparamos los productos manteniendo la trazabilidad.' },
-              { num: '03', titulo: 'Tú recibes calidad', desc: 'Compra online o visítanos. Producto fresco directamente de Agost a tu puerta.' },
+              { num: '03', titulo: 'Tú recibes calidad', desc: 'Compra online o visítanos. Producto fresco directamente del campo a tu puerta.' },
             ].map(({ num, titulo, desc }) => (
               <div key={num} className="text-center">
                 <div className="w-12 h-12 bg-[#4a7c59] text-white rounded-full
