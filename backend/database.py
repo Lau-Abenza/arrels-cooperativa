@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Leer variable ANTES de cargar dotenv
-DATABASE_URL = os.environ.get("DATABASE_URL", "")
+DATABASE_URL = os.environ.get("DB_URL") or os.environ.get("DATABASE_URL", "")
 
 # Cargar .env solo si no hay variable de entorno ya definida
 if not DATABASE_URL:
