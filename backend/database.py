@@ -16,6 +16,8 @@ DATABASE_URL = DATABASE_URL.replace("postgresql+psycopg://", "postgresql+psycopg
 DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://")
 
 print(f"DATABASE_URL inicio: {DATABASE_URL[:40]}...")
+print(f"URL COMPLETA: '{DATABASE_URL}'")
+print(f"URL LENGTH: {len(DATABASE_URL)}")
 
 engine = create_engine(DATABASE_URL, connect_args={}, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
