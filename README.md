@@ -165,7 +165,7 @@ arrels-cooperativa/
 ## 👩‍💻 Autora
 
 **Laura Mira Abenza**
-DAW · IES [Centro] · 2025
+DAW · IES Villa de Aspe · 2026
 [LinkedIn](https://linkedin.com/in/lmiraabenza) · [GitHub](https://github.com/Lau-Abenza)
 
 ---
