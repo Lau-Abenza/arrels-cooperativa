@@ -9,7 +9,7 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL", "")
 DATABASE_URL = DATABASE_URL.replace("postgresql+psycopg://", "postgresql+psycopg2://")
 DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://")
-
+print(f"DATABASE_URL: {DATABASE_URL[:30]}...")
 engine = create_engine(DATABASE_URL, connect_args={}, pool_pre_ping=True)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
