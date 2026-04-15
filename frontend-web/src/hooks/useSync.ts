@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { db } from '../db'
+import type { AnotacionLocal } from '../db'
 import axios from 'axios'
 
 export function useSync() {
@@ -43,7 +44,7 @@ export function useSync() {
       }
 
       await contarPendientes()
-    } catch (err) {
+    } catch {
       console.log('Sin conexión, reintentando más tarde')
     } finally {
       setSincronizando(false)
