@@ -38,7 +38,7 @@ export function useSync() {
         if (res.data.ok) {
           await db.anotaciones
             .where('synced').equals(0)
-            .modify({ synced: 1 })
+            .modify((a: AnotacionLocal) => { a.synced = true })
         }
       }
 

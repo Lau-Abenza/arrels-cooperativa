@@ -99,7 +99,7 @@ export default function Sensores() {
                     className={`text-left bg-white rounded-2xl p-4 border transition-all
                       ${activo ? 'ring-2 shadow-md' : 'border-slate-100 hover:border-slate-200'}
                       ${estado === 'alerta' ? 'border-amber-300' : ''}`}
-                    style={activo ? { ringColor: s.color, borderColor: s.color } : {}}
+                    style={activo ? { borderColor: s.color } : {}}
                   >
                     <div className="flex justify-between items-start mb-2">
                       <p className="text-xs text-slate-500 font-medium">{s.label}</p>
@@ -139,7 +139,7 @@ export default function Sensores() {
                     <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} tickLine={false} axisLine={false} />
                     <Tooltip
                       contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#f1f5f9', fontSize: 12 }}
-                      formatter={(val: number) => [`${val.toFixed(1)}${configActiva.unidad}`, configActiva.label]}
+                      formatter={(val) => [`${Number(val).toFixed(1)}${configActiva.unidad}`, configActiva.label]}
                     />
                     <Line
                       type="monotone"

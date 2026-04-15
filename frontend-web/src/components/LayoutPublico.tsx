@@ -1,9 +1,8 @@
-import { ReactNode, useState } from 'react'
+import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function LayoutPublico({ children }: { children: ReactNode }) {
   const navigate = useNavigate()
-  const [menuAbierto, setMenuAbierto] = useState(false)
 
   return (
     <div className="min-h-screen bg-[#f4f1ea]">
