@@ -3,9 +3,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql+psycopg2://postgres:yMBvQMwVEZHZDwPhFuTMoFGCBjkqeiDz@maglev.proxy.rlwy.net:31329/railway"
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
+if not DATABASE_URL:
+    from dotenv import load_dotenv
+    load_dotenv()
+    DATABASE_URL = os.getenv("DATABASE_URL", "")
 
-print(f"URL: {DATABASE_URL[:50]}...")
+DATABASE_URL = DATABASE_URL.replace("postgresql+psycopg://", "postgresql+psycopg2://")
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://")
 
 engine = create_engine(DATABASE_URL, connect_args={}, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
