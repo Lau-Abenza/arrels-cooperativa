@@ -20,6 +20,7 @@ import Inicio from './pages/Inicio'
 import TiendaPublica from './pages/TiendaPublica'
 import Blog from './pages/Blog'
 import './index.css'
+import './styles/main.scss'
 
 const queryClient = new QueryClient()
 

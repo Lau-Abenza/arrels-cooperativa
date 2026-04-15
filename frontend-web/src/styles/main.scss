@@ -1,0 +1,196 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ── Reset y base ─────────────────────────────────────────────────
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-base;
+  font-size: $font-size-base;
+  color: #1e293b;
+  background-color: $color-cream;
+  -webkit-font-smoothing: antialiased;
+}
+
+// ── Componentes reutilizables ─────────────────────────────────────
+
+.arrels-card {
+  @include card;
+  padding: $spacing-lg;
+}
+
+.arrels-btn-primary {
+  @include btn-primary;
+}
+
+.arrels-btn-accent {
+  @include btn-accent;
+}
+
+.arrels-input {
+  @include input-base;
+}
+
+// ── Sidebar responsive ────────────────────────────────────────────
+
+.arrels-sidebar {
+  width: 16rem;
+  min-height: 100vh;
+  background-color: $color-dark;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    min-height: auto;
+  }
+}
+
+// ── Layout principal ──────────────────────────────────────────────
+
+.arrels-layout {
+  display: flex;
+  min-height: 100vh;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
+}
+
+.arrels-main {
+  flex: 1;
+  overflow: auto;
+  padding: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md;
+  }
+}
+
+// ── Tablas responsive ─────────────────────────────────────────────
+
+.arrels-table-wrapper {
+  overflow-x: auto;
+  border-radius: $border-radius-2xl;
+  box-shadow: $shadow-sm;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      background-color: $color-dark;
+      color: white;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-size: $font-size-sm;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      font-size: $font-size-sm;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    tr:hover td {
+      background-color: rgba($color-green-light, 0.5);
+    }
+  }
+}
+
+// ── Grid responsive de productos ──────────────────────────────────
+
+.arrels-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// ── Hero section ──────────────────────────────────────────────────
+
+.arrels-hero {
+  background-color: $color-dark;
+  color: white;
+  padding: $spacing-2xl $spacing-lg;
+  text-align: center;
+
+  h1 {
+    font-size: $font-size-3xl;
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+
+    @include md {
+      font-size: 3rem;
+    }
+  }
+
+  p {
+    color: $color-green-mid;
+    font-size: $font-size-lg;
+    max-width: 40rem;
+    margin: 0 auto $spacing-xl;
+  }
+}
+
+// ── Badges de rol ─────────────────────────────────────────────────
+
+.badge-admin      { @include badge(#fee2e2, #b91c1c); }
+.badge-director   { @include badge(#f3e8ff, #7e22ce); }
+.badge-trabajador { @include badge(#dbeafe, #1d4ed8); }
+.badge-ingeniero  { @include badge(#dcfce7, #15803d); }
+.badge-socio      { @include badge(#fef3c7, #92400e); }
+.badge-web        { @include badge(#f1f5f9, #475569); }
+
+// ── Alertas ───────────────────────────────────────────────────────
+
+.arrels-alert-error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: $border-radius-xl;
+  padding: 0.75rem 1rem;
+  color: #b91c1c;
+  font-size: $font-size-sm;
+}
+
+.arrels-alert-success {
+  background-color: $color-green-light;
+  border: 1px solid #bbf7d0;
+  border-radius: $border-radius-xl;
+  padding: 0.75rem 1rem;
+  color: #15803d;
+  font-size: $font-size-sm;
+}
+
+// ── Spinner de carga ──────────────────────────────────────────────
+
+.arrels-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid $color-primary;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

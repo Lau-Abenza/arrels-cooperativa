@@ -1,0 +1,100 @@
+@use 'variables' as *;
+
+// ── Mixins responsive ───────────────────────────────────────────
+
+@mixin sm {
+  @media (min-width: $breakpoint-sm) { @content; }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) { @content; }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) { @content; }
+}
+
+// ── Mixins de componentes ───────────────────────────────────────
+
+@mixin card {
+  background-color: white;
+  border-radius: $border-radius-2xl;
+  box-shadow: $shadow-sm;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@mixin btn-primary {
+  background-color: $color-primary;
+  color: white;
+  font-weight: 600;
+  border-radius: $border-radius-xl;
+  padding: 0.625rem 1rem;
+  transition: background-color $transition-normal;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-accent {
+  background-color: $color-accent;
+  color: white;
+  font-weight: 600;
+  border-radius: $border-radius-xl;
+  padding: 0.625rem 1rem;
+  transition: background-color $transition-normal;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: darken($color-accent, 10%);
+  }
+}
+
+@mixin input-base {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: $border-radius-xl;
+  border: 1px solid #e2e8f0;
+  font-size: $font-size-sm;
+  transition: border-color $transition-normal, box-shadow $transition-normal;
+  outline: none;
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+  }
+}
+
+@mixin badge($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: $border-radius-full;
+  display: inline-block;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
