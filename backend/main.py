@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from routers import (auth, parcelas, productos, ventas,
                      fichajes, alquileres, aportaciones,
@@ -11,6 +12,17 @@ app = FastAPI(
     title="Arrels API",
     description="Plataforma digital para cooperativa agrícola",
     version="0.1.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://arrels-cooperativa.vercel.app"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(auth.router)
