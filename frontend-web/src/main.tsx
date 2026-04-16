@@ -21,6 +21,10 @@ import TiendaPublica from './pages/TiendaPublica'
 import Blog from './pages/Blog'
 import './index.css'
 import './styles/main.scss'
+import axios from 'axios'
+import { API_URL } from './config'
+
+axios.defaults.baseURL = API_URL
 
 const queryClient = new QueryClient()
 
