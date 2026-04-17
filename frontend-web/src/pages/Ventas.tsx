@@ -41,7 +41,7 @@ export default function Ventas() {
   const { data: ventas = [], isLoading } = useQuery({
     queryKey: ['ventas'],
     queryFn: async () => {
-      const res = await axios.get('/api/ventas/')
+      const res = await axios.get('/ventas/')
       return res.data as Venta[]
     }
   })
@@ -49,13 +49,13 @@ export default function Ventas() {
   const { data: productos = [] } = useQuery({
     queryKey: ['productos'],
     queryFn: async () => {
-      const res = await axios.get('/api/productos/')
+      const res = await axios.get('/productos/')
       return res.data as Producto[]
     }
   })
 
   const crearMutation = useMutation({
-    mutationFn: () => axios.post('/api/ventas/', {
+    mutationFn: () => axios.post('/ventas/', {
       socio_id: socioId || null,
       lineas: lineas.filter(l => l.producto_id > 0)
     }),

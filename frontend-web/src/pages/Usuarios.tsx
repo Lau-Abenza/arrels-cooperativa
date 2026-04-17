@@ -32,13 +32,13 @@ export default function Usuarios() {
   const { data: usuarios = [], isLoading } = useQuery({
     queryKey: ['usuarios'],
     queryFn: async () => {
-      const res = await axios.get('/api/auth/usuarios')
+      const res = await axios.get('/auth/usuarios')
       return res.data as Usuario[]
     }
   })
 
   const crearMutation = useMutation({
-    mutationFn: () => axios.post('/api/auth/registro', form),
+    mutationFn: () => axios.post('/auth/registro', form),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['usuarios'] })
       setMostrarForm(false)

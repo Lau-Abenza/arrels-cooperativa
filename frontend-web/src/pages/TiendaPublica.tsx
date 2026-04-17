@@ -16,6 +16,7 @@ interface Producto {
   destacado: boolean
   origen: string | null
   certificado: string | null
+  imagen_url: string | null
 }
 
 interface ItemCarrito {
@@ -33,7 +34,7 @@ export default function TiendaPublica() {
   const { data: productos = [], isLoading } = useQuery({
     queryKey: ['productos-publicos'],
     queryFn: async () => {
-      const res = await axios.get('/api/productos/publicos')
+      const res = await axios.get('/productos/publicos')
       return res.data as Producto[]
     }
   })
@@ -65,6 +66,20 @@ export default function TiendaPublica() {
     setCarritoAbierto(true)
   }
 
+  const getEmoji = (categoria: string) => {
+    const emojis: Record<string, string> = {
+      aceite: '🫒',
+      frutos_secos: '🌰',
+      conservas: '🥫',
+      semillas: '🌱',
+      herramientas: '🔧',
+      abonos: '🌿',
+      vino: '🍷',
+      miel: '🍯',
+    }
+    return emojis[categoria] || '📦'
+  }
+
   return (
     <LayoutPublico>
       <div className="max-w-7xl mx-auto px-6 py-8">
@@ -76,7 +91,6 @@ export default function TiendaPublica() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Toggle idioma */}
             <div className="flex rounded-lg bg-slate-100 p-0.5 gap-0.5">
               {(['es', 'en'] as const).map(lang => (
                 <button
@@ -91,7 +105,6 @@ export default function TiendaPublica() {
               ))}
             </div>
 
-            {/* Carrito */}
             <button
               onClick={() => setCarritoAbierto(!carritoAbierto)}
               className="relative bg-[#4a7c59] hover:bg-[#3d6b4e] text-white
@@ -108,7 +121,6 @@ export default function TiendaPublica() {
           </div>
         </div>
 
-        {/* Aviso idioma EN */}
         {idioma === 'en' && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-2.5 mb-4
                           text-sm text-blue-700 flex items-center gap-2">
@@ -118,9 +130,7 @@ export default function TiendaPublica() {
         )}
 
         <div className="flex gap-6">
-          {/* Contenido principal */}
           <div className="flex-1 min-w-0">
-            {/* Búsqueda y filtros */}
             <div className="flex gap-3 mb-4 flex-wrap">
               <input
                 type="text"
@@ -147,7 +157,6 @@ export default function TiendaPublica() {
               </div>
             </div>
 
-            {/* Grid productos */}
             {isLoading ? (
               <div className="flex justify-center py-12">
                 <div className="w-8 h-8 border-2 border-[#4a7c59] border-t-transparent rounded-full animate-spin" />
@@ -163,11 +172,16 @@ export default function TiendaPublica() {
                   <div key={p.id} className="bg-white rounded-2xl border border-slate-100
                                               shadow-sm hover:shadow-md transition-all overflow-hidden">
                     <div className="h-40 bg-gradient-to-br from-stone-100 to-amber-50
-                                    flex items-center justify-center text-5xl">
-                      {p.categoria === 'aceite' ? '🫒' :
-                       p.categoria === 'frutos_secos' ? '🌰' :
-                       p.categoria === 'conservas' ? '🥫' :
-                       p.categoria === 'fruta' ? '🍎' : '🌿'}
+                                    flex items-center justify-center overflow-hidden">
+                      {p.imagen_url && p.imagen_url !== 'string' ? (
+                        <img
+                          src={p.imagen_url}
+                          alt={idioma === 'es' ? p.nombre_es : p.nombre_en}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span className="text-5xl">{getEmoji(p.categoria)}</span>
+                      )}
                     </div>
                     <div className="p-4">
                       {p.certificado && (
@@ -206,12 +220,10 @@ export default function TiendaPublica() {
             )}
           </div>
 
-          {/* Panel carrito */}
           {carritoAbierto && (
             <aside className="w-72 flex-shrink-0">
               <div className="sticky top-20 bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
                 <h2 className="font-bold text-slate-800 mb-4">Tu carrito</h2>
-
                 {carrito.length === 0 ? (
                   <div className="text-center py-8 text-slate-400">
                     <p className="text-3xl mb-2">🛒</p>
@@ -249,7 +261,6 @@ export default function TiendaPublica() {
                         </div>
                       ))}
                     </div>
-
                     <div className="border-t border-slate-100 pt-3">
                       <div className="flex justify-between text-sm mb-1">
                         <span className="text-slate-500">Subtotal</span>

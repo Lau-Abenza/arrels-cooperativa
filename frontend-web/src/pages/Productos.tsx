@@ -43,13 +43,13 @@ export default function Productos() {
   const { data: productos = [], isLoading } = useQuery({
     queryKey: ['productos'],
     queryFn: async () => {
-      const res = await axios.get('/api/productos/')
+      const res = await axios.get('/productos/')
       return res.data as Producto[]
     }
   })
 
   const crearMutation = useMutation({
-    mutationFn: (datos: typeof FORM_VACIO) => axios.post('/api/productos/', datos),
+    mutationFn: (datos: typeof FORM_VACIO) => axios.post('/productos/', datos),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['productos'] })
       setMostrarForm(false)

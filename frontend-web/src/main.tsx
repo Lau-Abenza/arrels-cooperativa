@@ -1,3 +1,5 @@
+import React from 'react'
+import type { ReactNode } from 'react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -28,7 +30,7 @@ axios.defaults.baseURL = API_URL
 
 const queryClient = new QueryClient()
 
-function RutaProtegida({ children }: { children: React.ReactNode }) {
+function RutaProtegida({ children }: { children: ReactNode }) {
   const { usuario, cargando } = useAuth()
   if (cargando) return <div className="min-h-screen bg-[#1c2b1a] flex items-center justify-center">
     <div className="w-8 h-8 border-2 border-[#4a7c59] border-t-transparent rounded-full animate-spin" />

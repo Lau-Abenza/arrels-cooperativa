@@ -40,7 +40,7 @@ export default function Alquileres() {
   const { data: aperos = [] } = useQuery({
     queryKey: ['aperos'],
     queryFn: async () => {
-      const res = await axios.get('/api/alquileres/aperos')
+      const res = await axios.get('/alquileres/aperos')
       return res.data as Apero[]
     }
   })
@@ -48,13 +48,13 @@ export default function Alquileres() {
   const { data: alquileres = [], isLoading } = useQuery({
     queryKey: ['alquileres'],
     queryFn: async () => {
-      const res = await axios.get('/api/alquileres/')
+      const res = await axios.get('/alquileres/')
       return res.data as Alquiler[]
     }
   })
 
   const crearMutation = useMutation({
-    mutationFn: () => axios.post('/api/alquileres/', {
+    mutationFn: () => axios.post('/alquileres/', {
       apero_id: form.apero_id,
       socio_id: parseInt(form.socio_id),
       fecha_inicio: new Date(form.fecha_inicio).toISOString(),

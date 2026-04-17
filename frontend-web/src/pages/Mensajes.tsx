@@ -34,7 +34,7 @@ export default function Mensajes() {
   })
 
   const enviarMutation = useMutation({
-    mutationFn: () => axios.post('/api/mensajes/', {
+    mutationFn: () => axios.post('/mensajes/', {
       para_id: conversacionActiva,
       texto
     }),

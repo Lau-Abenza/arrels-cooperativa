@@ -32,7 +32,7 @@ export default function PlanesAccion() {
   })
 
   const crearMutation = useMutation({
-    mutationFn: () => axios.post('/api/planes-accion/', {
+    mutationFn: () => axios.post('/planes-accion/', {
       socio_id: parseInt(form.socio_id),
       titulo: form.titulo,
       descripcion: form.descripcion

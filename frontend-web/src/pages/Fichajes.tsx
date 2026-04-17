@@ -21,14 +21,14 @@ export default function Fichajes() {
   const { data: fichajes = [], isLoading } = useQuery({
     queryKey: ['fichajes-hoy'],
     queryFn: async () => {
-      const res = await axios.get('/api/fichajes/hoy')
+      const res = await axios.get('/fichajes/hoy')
       return res.data as Fichaje[]
     },
     refetchInterval: 30000 // refresca cada 30 segundos
   })
 
   const ficharMutation = useMutation({
-    mutationFn: (tipo: 'entrada' | 'salida') => axios.post('/api/fichajes/', {
+    mutationFn: (tipo: 'entrada' | 'salida') => axios.post('/fichajes/', {
       tipo,
       notas: notas || null
     }),

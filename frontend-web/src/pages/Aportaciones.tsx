@@ -30,13 +30,13 @@ export default function Aportaciones() {
   const { data: aportaciones = [], isLoading } = useQuery({
     queryKey: ['aportaciones'],
     queryFn: async () => {
-      const res = await axios.get('/api/aportaciones/')
+      const res = await axios.get('/aportaciones/')
       return res.data as Aportacion[]
     }
   })
 
   const crearMutation = useMutation({
-    mutationFn: () => axios.post('/api/aportaciones/', {
+    mutationFn: () => axios.post('/aportaciones/', {
       socio_id: parseInt(form.socio_id),
       producto: form.producto,
       kg: parseFloat(form.kg),

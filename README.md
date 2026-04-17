@@ -1,6 +1,6 @@
 # 🌿 ARRELS — Plataforma Digital para Cooperativa Agrícola
 
-> **TFG DAW 2025** · Laura Mira Abenza · [linkedin.com/in/lmiraabenza](https://linkedin.com/in/lmiraabenza)
+> **TFG DAW 2026** · Laura Mira Abenza · [linkedin.com/in/lmiraabenza](https://linkedin.com/in/lmiraabenza)
 
 Arrels (raíces en valenciano) es una plataforma web completa para la gestión digital de una cooperativa agrícola. Incluye panel de gestión interna multi-rol, cuaderno de campo con funcionamiento **offline-first**, monitorización de sensores IoT en tiempo real y tienda online bilingüe ES/EN.
 
@@ -10,9 +10,9 @@ Arrels (raíces en valenciano) es una plataforma web completa para la gestión d
 
 | Servicio | URL |
 |---|---|
-| Web pública + Tienda | [arrels-coop.vercel.app](https://arrels-coop.vercel.app) |
-| Panel cooperativa | [arrels-coop.vercel.app/login](https://arrels-coop.vercel.app/login) |
-| API + Swagger | [arrels-api.railway.app/docs](https://arrels-api.railway.app/docs) |
+| Web pública + Tienda | [arrels-cooperativa.vercel.app](https://arrels-cooperativa.vercel.app) |
+| Panel cooperativa | [arrels-cooperativa.vercel.app/login](https://arrels-cooperativa.vercel.app/login) |
+| API + Swagger | [arrels-cooperativa-production.up.railway.app/docs](https://arrels-cooperativa-production.up.railway.app/docs) |
 
 **Credenciales de prueba:**
 | Rol | Email | Contraseña |

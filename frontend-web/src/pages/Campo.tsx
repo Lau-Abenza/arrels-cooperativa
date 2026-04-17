@@ -23,7 +23,7 @@ export default function Campo() {
   const { data: parcelas = [] } = useQuery({
     queryKey: ['parcelas-campo'],
     queryFn: async () => {
-      const res = await axios.get('/api/parcelas/')
+      const res = await axios.get('/parcelas/')
       return res.data as Parcela[]
     },
     retry: false,

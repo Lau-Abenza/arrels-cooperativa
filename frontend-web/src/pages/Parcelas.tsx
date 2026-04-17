@@ -42,13 +42,13 @@ export default function Parcelas() {
   const { data: parcelas = [], isLoading } = useQuery({
     queryKey: ['parcelas'],
     queryFn: async () => {
-      const res = await axios.get('/api/parcelas/')
+      const res = await axios.get('/parcelas/')
       return res.data as Parcela[]
     }
   })
 
   const crearMutation = useMutation({
-    mutationFn: (datos: ParcelaForm) => axios.post('/api/parcelas/', datos),
+    mutationFn: (datos: ParcelaForm) => axios.post('/parcelas/', datos),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['parcelas'] })
       setMostrarForm(false)
