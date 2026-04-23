@@ -177,7 +177,7 @@ export default function TiendaPublica() {
                         <img
                           src={p.imagen_url}
                           alt={idioma === 'es' ? p.nombre_es : p.nombre_en}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain p-2"
                         />
                       ) : (
                         <span className="text-5xl">{getEmoji(p.categoria)}</span>
