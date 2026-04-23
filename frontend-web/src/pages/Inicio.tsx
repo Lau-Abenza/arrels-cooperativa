@@ -1,8 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import LayoutPublico from '../components/LayoutPublico'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
 export default function Inicio() {
   const navigate = useNavigate()
+  const { data: productosDestacados = [] } = useQuery<any[]>({
+  queryKey: ['productos-destacados'],
+  queryFn: async () => {
+    const res = await axios.get('/productos/publicos')
+    return (res.data as any[]).filter((p: any) => p.destacado).slice(0, 3)
+  }
+  })
 
   return (
     <LayoutPublico>
@@ -62,45 +71,27 @@ export default function Inicio() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-[#1c2b1a] mb-2">Productos destacados</h2>
           <p className="text-slate-500 mb-8">Lo mejor de nuestra cooperativa</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { emoji: '🫒', nombre: 'Aceite de Oliva Virgen Extra', desc: 'Variedad Blanqueta, primera extracción en frío', precio: '8.50€/botella' },
-              { emoji: '🌰', nombre: 'Almendras Marcona Crudas', desc: 'Calibre extra, sin sal ni tostado', precio: '12€/kg' },
-              { emoji: '🍯', nombre: 'Miel de Romero Artesanal', desc: 'Producción limitada, sin pasteurizar', precio: '7.80€/tarro' },
-              { emoji: '🍇', nombre: 'Uva de Mesa', desc: 'Variedad Aledo, última variedad del año', precio: '2.25€/kg' },
-              { emoji: '🍅', nombre: 'Tomate', desc: 'Variedad Raf', precio: '5.15€/kg' },
-              { emoji: '🫒', nombre: 'Aceitunas verdes', desc: 'Variedad Picual', precio: '2.35€/tarro' },
-              { emoji: '🍊', nombre: 'Naranja', desc: 'Variedad Navelina', precio: '4.35€/kg' },
-              { emoji: '🍋', nombre: 'Limón', desc: 'Variedad Génova', precio: '5.25€/kg' },
-              { emoji: '🍈', nombre: 'Melón', desc: 'Variedad Galia', precio: '6.35€/kg' },
-              { emoji: '🍉', nombre: 'Sandía', desc: 'Variedad Jubilee', precio: '7.15€/kg' },
-              { emoji: '🥜', nombre: 'Cacahuete', desc: 'Variedad Virginia', precio: '5.75€/kg' },
-              { emoji: '🍒', nombre: 'Cereza', desc: 'Variedad Nimba', precio: '5.35€/kg' },
-              { emoji: '🌰', nombre: 'Avellana', desc: 'Variedad Negret', precio: '4.15€/kg' },
-              { emoji: '🍎', nombre: 'Manzana', desc: 'Variedad Gala', precio: '4.55€/kg' },
-              { emoji: '🫛', nombre: 'Guisante', desc: 'Variedad Verde', precio: '3.35€/kg' },
-              { emoji: '🫘', nombre: 'Judías', desc: 'Variedad Blancas', precio: '2.45€/kg' },
-              { emoji: '🧅', nombre: 'Cebolla', desc: 'Variedad Amarilla', precio: '3.55€/kg' },
-              { emoji: '🍆', nombre: 'Berenjena', desc: 'Variedad Black Bell', precio: '5.35€/kg' },
-              { emoji: '🥕', nombre: 'Zanahoria', desc: 'Variedad Nantes', precio: '3.15€/kg' },
-              { emoji: '🥬', nombre: 'Lechuga', desc: 'Variedad Romana', precio: '2.45€/kg' },
-              { emoji: '🥑', nombre: 'Aguacate', desc: 'Variedad Hass', precio: '6.35€/kg' },              
-            ].map(({ emoji, nombre, desc, precio }) => (
-              <div key={nombre} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100
-                                           hover:shadow-md transition-shadow">
-                <div className="h-40 bg-gradient-to-br from-stone-100 to-amber-50
-                                flex items-center justify-center text-6xl">
-                  {emoji}
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-slate-800 mb-1">{nombre}</h3>
-                  <p className="text-slate-500 text-sm mb-3">{desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-[#4a7c59]">{precio}</span>
-                    <button
-                      onClick={() => navigate('/tienda')}
-                      className="bg-[#4a7c59] hover:bg-[#3d6b4e] text-white
-                                 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {productosDestacados.map((p: any) => (
+            <div key={p.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100
+                                    hover:shadow-md transition-shadow">
+              <div className="h-40 bg-gradient-to-br from-stone-100 to-amber-50
+                            flex items-center justify-center overflow-hidden">
+                {p.imagen_url && p.imagen_url !== 'string' ? (
+                  <img src={p.imagen_url} alt={p.nombre_es} className="w-full h-full object-contain p-2" />
+                ) : (
+                  <span className="text-6xl">🌿</span>
+                )}
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-slate-800 mb-1">{p.nombre_es}</h3>
+                <p className="text-slate-500 text-sm mb-3">{p.descripcion_es}</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[#4a7c59]">{p.precio}€/{p.unidad}</span>
+                  <button
+                    onClick={() => navigate('/tienda')}
+                    className="bg-[#4a7c59] hover:bg-[#3d6b4e] text-white
+                            px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                     >
                       Ver más
                     </button>
