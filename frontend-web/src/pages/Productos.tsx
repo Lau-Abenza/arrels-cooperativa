@@ -16,6 +16,7 @@ interface Producto {
   activo: boolean
   alerta_stock: boolean
   certificado: string | null
+  imagen_url: string | null
 }
 
 const FORM_VACIO = {
@@ -31,6 +32,7 @@ const FORM_VACIO = {
   destacado: false,
   origen: '',
   certificado: '',
+  imagen_url: '',
 }
 
 export default function Productos() {
@@ -59,7 +61,7 @@ export default function Productos() {
 
   const actualizarMutation = useMutation({
     mutationFn: ({ id, datos }: { id: number, datos: typeof FORM_VACIO }) =>
-      axios.put(`/api/productos/${id}`, datos),
+      axios.put(`/productos/${id}`, datos),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['productos'] })
       setMostrarForm(false)
@@ -91,6 +93,7 @@ export default function Productos() {
       destacado: p.destacado,
       origen: '',
       certificado: p.certificado || '',
+      imagen_url: p.imagen_url || '',
     })
     setEditandoId(p.id)
     setMostrarForm(true)
@@ -160,6 +163,7 @@ export default function Productos() {
                 { label: 'Descripción (EN)', key: 'descripcion_en' },
                 { label: 'Categoría', key: 'categoria' },
                 { label: 'Origen', key: 'origen' },
+                { label: 'URL Imagen', key: 'imagen_url' },
               ].map(({ label, key }) => (
                 <div key={key}>
                   <label className="block text-sm font-medium text-slate-600 mb-1">{label}</label>
