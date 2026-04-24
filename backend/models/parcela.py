@@ -13,6 +13,8 @@ class Parcela(Base):
     provincia     = Column(String(100), default="Alicante")
     descripcion   = Column(Text, nullable=True)
     geojson       = Column(Text, nullable=True)
+    lat           = Column(Float, nullable=True)
+    lon           = Column(Float, nullable=True)
     agricultor_id = Column(Integer, ForeignKey("usuarios.id"), nullable=True)
 
     agricultor = relationship("Usuario", backref="parcelas")
