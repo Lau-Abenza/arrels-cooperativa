@@ -24,6 +24,7 @@ import './index.css'
 import './styles/main.scss'
 import axios from 'axios'
 import { API_URL } from './config'
+import SobreNosotros from './pages/SobreNosotros'
 
 axios.defaults.baseURL = API_URL
 
@@ -112,7 +113,12 @@ function App() {
         <Route path="/blog" element={
           <Blog />} 
         />
-        <Route path="*" element={<Navigate to="/inicio" replace />} />
+        <Route path="*" element={
+          <Navigate to="/inicio" replace />}
+        />
+        <Route path="/sobre-nosotros" element={
+          <SobreNosotros />} 
+        />
       </Routes>
     </BrowserRouter>
   )

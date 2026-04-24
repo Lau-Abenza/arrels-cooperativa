@@ -21,7 +21,7 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
               { label: 'Inicio', path: '/inicio' },
               { label: 'Tienda', path: '/tienda' },
               { label: 'Blog', path: '/blog' },
-              { label: 'Contacto', path: '/contacto' },
+              { label: 'Sobre Nosotros', path: '/sobre-nosotros' },
             ].map(({ label, path }) => (
               <button
                 key={path}
