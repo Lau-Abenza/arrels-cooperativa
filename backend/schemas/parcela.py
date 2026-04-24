@@ -23,10 +23,14 @@ class ParcelaUpdate(BaseModel):
     descripcion: Optional[str] = None
     geojson: Optional[str] = None
     agricultor_id: Optional[int] = None
+    lat: Optional[float] = None
+    lon: Optional[float] = None
 
 class ParcelaOut(ParcelaBase):
     id: int
     agricultor_nombre: Optional[str] = None
+    lat: Optional[float] = None
+    lon: Optional[float] = None
 
     class Config:
         from_attributes = True

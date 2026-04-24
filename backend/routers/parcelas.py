@@ -27,7 +27,9 @@ def listar_parcelas(
             "descripcion": p.descripcion,
             "geojson": p.geojson,
             "agricultor_id": p.agricultor_id,
-            "agricultor_nombre": p.agricultor.nombre if p.agricultor else None
+            "agricultor_nombre": p.agricultor.nombre if p.agricultor else None,
+            "lat": p.lat,
+            "lon": p.lon
         }
         result.append(p_dict)
     return result
@@ -51,7 +53,9 @@ def obtener_parcela(
         "descripcion": parcela.descripcion,
         "geojson": parcela.geojson,
         "agricultor_id": parcela.agricultor_id,
-        "agricultor_nombre": parcela.agricultor.nombre if parcela.agricultor else None
+        "agricultor_nombre": parcela.agricultor.nombre if parcela.agricultor else None,
+        "lat": parcela.lat,
+        "lon": parcela.lon
     }
 
 @router.post("/", response_model=ParcelaOut, status_code=201)
@@ -74,7 +78,9 @@ def crear_parcela(
         "descripcion": parcela.descripcion,
         "geojson": parcela.geojson,
         "agricultor_id": parcela.agricultor_id,
-        "agricultor_nombre": parcela.agricultor.nombre if parcela.agricultor else None
+        "agricultor_nombre": parcela.agricultor.nombre if parcela.agricultor else None,
+        "lat": parcela.lat,
+        "lon": parcela.lon
     }
 
 @router.put("/{parcela_id}", response_model=ParcelaOut)
@@ -101,7 +107,9 @@ def actualizar_parcela(
         "descripcion": parcela.descripcion,
         "geojson": parcela.geojson,
         "agricultor_id": parcela.agricultor_id,
-        "agricultor_nombre": parcela.agricultor.nombre if parcela.agricultor else None
+        "agricultor_nombre": parcela.agricultor.nombre if parcela.agricultor else None,
+        "lat": parcela.lat,
+        "lon": parcela.lon
     }
 
 @router.delete("/{parcela_id}", status_code=204)

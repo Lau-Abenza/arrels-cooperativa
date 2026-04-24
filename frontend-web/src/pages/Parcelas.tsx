@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import Layout from '../components/Layout'
+import MapaParcela from '../components/MapaParcela'
 
 interface Parcela {
   id: number
@@ -13,6 +14,8 @@ interface Parcela {
   descripcion: string
   agricultor_id: number | null
   agricultor_nombre: string | null
+  lat: number | null
+  lon: number | null
 }
 
 interface ParcelaForm {
@@ -22,6 +25,8 @@ interface ParcelaForm {
   municipio: string
   descripcion: string
   agricultor_id: number | null
+  lat: number | null
+  lon: number | null
 }
 
 const FORM_VACIO: ParcelaForm = {
@@ -31,6 +36,8 @@ const FORM_VACIO: ParcelaForm = {
   municipio: '',
   descripcion: '',
   agricultor_id: null,
+  lat: null,
+  lon: null,
 }
 
 export default function Parcelas() {
@@ -38,6 +45,7 @@ export default function Parcelas() {
   const [mostrarForm, setMostrarForm] = useState(false)
   const [form, setForm] = useState<ParcelaForm>(FORM_VACIO)
   const [editandoId, setEditandoId] = useState<number | null>(null)
+  const [parcelaMapaId, setParcelaMapaId] = useState<number | null>(null)
 
   const { data: parcelas = [], isLoading } = useQuery({
     queryKey: ['parcelas'],
@@ -58,7 +66,7 @@ export default function Parcelas() {
 
   const actualizarMutation = useMutation({
     mutationFn: ({ id, datos }: { id: number, datos: ParcelaForm }) =>
-      axios.put(`/api/parcelas/${id}`, datos),
+      axios.put(`/parcelas/${id}`, datos),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['parcelas'] })
       setMostrarForm(false)
@@ -84,6 +92,8 @@ export default function Parcelas() {
       municipio: p.municipio || '',
       descripcion: p.descripcion || '',
       agricultor_id: p.agricultor_id,
+      lat: p.lat,
+      lon: p.lon,
     })
     setEditandoId(p.id)
     setMostrarForm(true)
@@ -205,12 +215,18 @@ export default function Parcelas() {
                     <td className="px-4 py-3 text-slate-600">{p.superficie_ha} ha</td>
                     <td className="px-4 py-3 text-slate-600">{p.municipio || '—'}</td>
                     <td className="px-4 py-3 text-slate-600">{p.agricultor_nombre || '—'}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 flex gap-3">
                       <button
                         onClick={() => handleEditar(p)}
                         className="text-[#4a7c59] hover:underline text-sm font-medium"
                       >
                         Editar
+                      </button>
+                      <button
+                        onClick={() => setParcelaMapaId(parcelaMapaId === p.id ? null : p.id)}
+                        className="text-[#2471a3] hover:underline text-sm font-medium"
+                      >
+                        🗺️ Mapa
                       </button>
                     </td>
                   </tr>
@@ -219,6 +235,34 @@ export default function Parcelas() {
             </table>
           </div>
         )}
+        {parcelaMapaId && (() => {
+          const p = parcelas.find(p => p.id === parcelaMapaId)
+          if (!p) return null
+          return (
+            <div className="mt-4">
+              <h3 className="font-semibold text-slate-700 mb-3">
+                🗺️ Mapa — {p.nombre} ({p.municipio})
+              </h3>
+              <MapaParcela
+                key={`${p.id}-${p.lat}-${p.lon}`}
+                nombre={p.nombre}
+                municipio={p.municipio || 'Agost'}
+                lat={p.lat}
+                lon={p.lon}
+                editable={true}
+                onUbicacionChange={(lat, lon) => {
+                  console.log('Guardando coordenadas:', lat, lon, 'para parcela:', p.id)
+                  axios.put(`/parcelas/${p.id}`, { lat, lon })
+                    .then((res) => {
+                    console.log('Respuesta:', res.data)
+                    queryClient.invalidateQueries({ queryKey: ['parcelas'] })
+                  })
+                  .catch(err => console.error('Error:', err))
+                }}
+              />
+            </div>
+          )
+        })()}
       </div>
     </Layout>
   )
