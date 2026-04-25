@@ -82,3 +82,25 @@ def listar_usuarios(
         "rol": u.rol,
         "activo": u.activo
     } for u in usuarios]
+
+@router.put("/usuarios/{usuario_id}")
+def editar_usuario(
+    usuario_id: int,
+    datos: dict,
+    db: Session = Depends(get_db),
+    usuario = Depends(require_role("admin"))
+):
+    u = db.query(Usuario).filter(Usuario.id == usuario_id).first()
+    if not u:
+        raise HTTPException(404, "Usuario no encontrado")
+    if "nombre" in datos:
+        u.nombre = datos["nombre"]
+    if "email" in datos:
+        u.email = datos["email"]
+    if "rol" in datos:
+        u.rol = datos["rol"]
+    if "password" in datos and datos["password"]:
+        u.password = hash_password(datos["password"])
+    db.commit()
+    db.refresh(u)
+    return {"id": u.id, "nombre": u.nombre, "email": u.email, "rol": u.rol, "activo": u.activo}
