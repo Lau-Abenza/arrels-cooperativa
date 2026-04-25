@@ -55,6 +55,14 @@ export default function Parcelas() {
     }
   })
 
+  const { data: socios = [] } = useQuery({
+    queryKey: ['socios'],
+    queryFn: async () => {
+      const res = await axios.get('/auth/usuarios')
+      return (res.data as any[]).filter(u => u.rol === 'socio')
+    }
+  })
+
   const crearMutation = useMutation({
     mutationFn: (datos: ParcelaForm) => axios.post('/parcelas/', datos),
     onSuccess: () => {
@@ -163,6 +171,24 @@ export default function Parcelas() {
                              focus:outline-none focus:ring-2 focus:ring-[#4a7c59]/30
                              focus:border-[#4a7c59] text-sm resize-none"
                 />
+              </div>
+
+              <div className="col-span-2">
+                <label className="block text-sm font-medium text-slate-600 mb-1">
+                  Agricultor (socio)
+                </label>
+                <select
+                  value={form.agricultor_id || ''}
+                  onChange={e => setForm(prev => ({ ...prev, agricultor_id: e.target.value ? parseInt(e.target.value) : null }))}
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200
+                            focus:outline-none focus:ring-2 focus:ring-[#4a7c59]/30
+                          focus:border-[#4a7c59] text-sm"
+                >
+                  <option value="">Sin asignar</option>
+                  {socios.map((s: any) => (
+                    <option key={s.id} value={s.id}>{s.nombre}</option>
+                  ))}
+                </select>
               </div>
 
               <div className="col-span-2 flex gap-3 justify-end">
