@@ -208,3 +208,5 @@ __marimo__/
 
 .env.local
 .env.production.env
+replacements.txt.bak
+*.bak
