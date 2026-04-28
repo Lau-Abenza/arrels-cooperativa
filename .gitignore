@@ -210,3 +210,6 @@ __marimo__/
 .env.production.env
 replacements.txt.bak
 *.bak
+
+.vercel
+.env*.local
