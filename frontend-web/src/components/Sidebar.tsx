@@ -9,18 +9,19 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard',    icon: '📊', path: '/dashboard',    roles: ['admin','director','trabajador','ingeniero','socio'] },
-  { label: 'Parcelas',     icon: '🌿', path: '/parcelas',     roles: ['admin','director','ingeniero','trabajador'] },
-  { label: 'Productos',    icon: '📦', path: '/productos',    roles: ['admin','trabajador','director'] },
-  { label: 'Ventas',       icon: '🛒', path: '/ventas',       roles: ['admin','trabajador','director'] },
-  { label: 'Alquileres',   icon: '🚜', path: '/alquileres',   roles: ['admin','trabajador','director'] },
-  { label: 'Fichajes',     icon: '⏱',  path: '/fichajes',     roles: ['admin','trabajador','director'] },
-  { label: 'Aportaciones', icon: '⚖️', path: '/aportaciones', roles: ['admin','trabajador','director'] },
-  { label: 'Sensores IoT', icon: '📡', path: '/sensores',     roles: ['admin','ingeniero','director'] },
-  { label: 'Mensajes',     icon: '💬', path: '/mensajes',     roles: ['admin','ingeniero','socio'] },
-  { label: 'Planes de Acción', icon: '📋', path: '/planes_accion', roles: ['admin','ingeniero'] },
-  { label: 'Usuarios',     icon: '👥', path: '/usuarios',     roles: ['admin'] },
-  { label: 'App de Campo', icon: '🌾', path: '/campo', roles: ['admin','ingeniero','socio'] },
+  { label: 'Dashboard',       icon: '📊', path: '/dashboard',    roles: ['admin','director','trabajador','ingeniero','socio'] },
+  { label: 'Parcelas',        icon: '🌿', path: '/parcelas',     roles: ['admin','director','ingeniero','trabajador'] },
+  { label: 'Mi Parcela',      icon: '🗺️', path: '/parcelas',     roles: ['socio'] },
+  { label: 'Productos',       icon: '📦', path: '/productos',    roles: ['admin','trabajador','director'] },
+  { label: 'Ventas',          icon: '🛒', path: '/ventas',       roles: ['admin','trabajador','director'] },
+  { label: 'Alquileres',      icon: '🚜', path: '/alquileres',   roles: ['admin','trabajador','director','socio'] },
+  { label: 'Fichajes',        icon: '⏱',  path: '/fichajes',     roles: ['admin','trabajador','director'] },
+  { label: 'Aportaciones',    icon: '⚖️', path: '/aportaciones', roles: ['admin','trabajador','director','socio'] },
+  { label: 'Sensores IoT',    icon: '📡', path: '/sensores',     roles: ['admin','ingeniero','director','socio'] },
+  { label: 'Mensajes',        icon: '💬', path: '/mensajes',     roles: ['admin','ingeniero','socio'] },
+  { label: 'Planes de Acción',icon: '📋', path: '/planes_accion',roles: ['admin','ingeniero','socio'] },
+  { label: 'Usuarios',        icon: '👥', path: '/usuarios',     roles: ['admin'] },
+  { label: 'App de Campo',    icon: '🌾', path: '/campo',        roles: ['admin','ingeniero','socio','trabajador'] },
 ]
 
 export default function Sidebar() {

@@ -129,6 +129,38 @@ export default function Blog() {
           </div>
         </div>
       </div>
+    {/* Meteorología */}
+      <section className="py-12 px-6 bg-[#f4f1ea]">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-[#1c2b1a] mb-2">🌤️ Meteorología</h2>
+          <p className="text-slate-500 mb-6">Previsión y radar para Agost, Alicante</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-2xl p-4 overflow-hidden">
+              <h3 className="font-bold text-slate-800 mb-3">🌧️ Radar meteorológico</h3>
+              <iframe
+                src="https://embed.windy.com/embed2.html?lat=38.44&lon=-0.64&detailLat=38.44&detailLon=-0.64&width=650&height=350&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
+                width="100%"
+                height="350"
+                frameBorder="0"
+                title="Radar Windy Agost"
+                className="rounded-xl"
+              ></iframe>
+            </div>
+            <div className="bg-white rounded-2xl p-4 overflow-hidden">
+              <h3 className="font-bold text-slate-800 mb-3">🌤️ Predicción Agost</h3>
+              <iframe
+                src="https://www.aemet.es/es/eltiempo/prediccion/municipios/widget/agost-id03002"
+                width="100%"
+                height="500"
+                frameBorder="0"
+                title="Widget AEMET Agost"
+                className="rounded-xl"
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
     </LayoutPublico>
   )
 }

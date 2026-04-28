@@ -112,6 +112,54 @@ export default function Inicio() {
         </div>
       </section>
 
+      {/* Meteorología */}
+      <section className="py-12 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-[#1c2b1a] mb-2">🌤️ Meteorología</h2>
+          <p className="text-slate-500 mb-6">Previsión del tiempo para Agost, Alicante</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-[#f4f1ea] rounded-2xl p-4 overflow-hidden">
+              <h3 className="font-bold text-slate-800 mb-3">🌧️ Radar meteorológico</h3>
+            <iframe
+              src="https://embed.windy.com/embed2.html?lat=38.44&lon=-0.64&detailLat=38.44&detailLon=-0.64&width=650&height=350&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
+              width="100%"
+              height="350"
+              frameBorder="0"
+              title="Radar Windy Agost"
+              className="rounded-x1"
+            ></iframe>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-4 overflow-hidden flex flex-col">
+            <h3 className="font-bold text-slate-800 mb-3">🌤️ Predicción Agost</h3>
+            <div className="bg-[#eef4f0] rounded-xl p-6 flex-1 flex flex-col items-center justify-center text-center gap-4">
+              <span className="text-6xl">⛅</span>
+              <div>
+                <p className="font-bold text-slate-800 text-lg">Agost, Alicante</p>
+                <p className="text-slate-500 text-sm mt-1">Consulta la predicción completa en AEMET</p>
+              </div>
+              
+              <a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/agost-id03002"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#2471a3] hover:bg-[#1a5a8a] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors"
+              >
+                Ver predicción 7 días →
+              </a>
+              
+              <a href="https://www.aemet.es/es/eltiempo/prediccion/avisos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#e07a30] hover:bg-[#c96a20] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors"
+              >
+                ⚠️ Ver avisos meteorológicos →
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+
       {/* Cómo funciona */}
       <section className="bg-white py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">

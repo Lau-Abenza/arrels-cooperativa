@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import Layout from '../components/Layout'
 import MapaParcela from '../components/MapaParcela'
+import { useAuth } from '../context/AuthContext'
 
 interface Parcela {
   id: number
@@ -42,6 +43,7 @@ const FORM_VACIO: ParcelaForm = {
 
 export default function Parcelas() {
   const queryClient = useQueryClient()
+  const { usuario } = useAuth()
   const [mostrarForm, setMostrarForm] = useState(false)
   const [form, setForm] = useState<ParcelaForm>(FORM_VACIO)
   const [editandoId, setEditandoId] = useState<number | null>(null)
@@ -242,12 +244,14 @@ export default function Parcelas() {
                     <td className="px-4 py-3 text-slate-600">{p.municipio || '—'}</td>
                     <td className="px-4 py-3 text-slate-600">{p.agricultor_nombre || '—'}</td>
                     <td className="px-4 py-3 flex gap-3">
+                    {usuario?.rol !== 'socio' && (
                       <button
                         onClick={() => handleEditar(p)}
                         className="text-[#4a7c59] hover:underline text-sm font-medium"
                       >
                         Editar
                       </button>
+                    )}
                       <button
                         onClick={() => setParcelaMapaId(parcelaMapaId === p.id ? null : p.id)}
                         className="text-[#2471a3] hover:underline text-sm font-medium"
