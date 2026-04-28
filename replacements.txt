@@ -1,5 +1,9 @@
 # replacements.txt
+<<<<<<< HEAD
 REDACTED_EDGE_TABS==>REDACTED_EDGE_TABS
+=======
+edge_all_open_tabs==>REDACTED_EDGE_TABS
+>>>>>>> 444c71d (Sanitize: remove accidental edge_all_open_tabs metadata from replacements.txt)
 JWT_SECRET==>REDACTED_JWT_SECRET
 2026arrels-coop@==>REDACTED_JWT_SECRET
 arrels-coop2026#==>REDACTED_JWT_SECRET
