@@ -50,7 +50,8 @@ def login(datos: LoginIn, db: Session = Depends(get_db)):
     return TokenOut(
         access_token=token,
         rol=usuario.rol,
-        nombre=usuario.nombre
+        nombre=usuario.nombre,
+        id=usuario.id
     )
 
 @router.get("/me", response_model=UsuarioOut)

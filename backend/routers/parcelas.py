@@ -12,8 +12,13 @@ router = APIRouter(prefix="/parcelas", tags=["Parcelas"])
 @router.get("/", response_model=List[ParcelaOut])
 def listar_parcelas(
     db: Session = Depends(get_db),
-    usuario = Depends(require_role("admin", "director", "ingeniero", "trabajador"))
+    usuario = Depends(require_role("admin", "director", "ingeniero", "trabajador", "socio"))
 ):
+    if usuario.rol == "socio":
+        parcelas = db.query(Parcela).filter(Parcela.agricultor_id == usuario.id).all()
+    else:
+        parcelas = db.query(Parcela).all()
+        
     parcelas = db.query(Parcela).all()
     result = []
     for p in parcelas:

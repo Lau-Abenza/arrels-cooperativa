@@ -37,8 +37,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string) => {
     const res = await axios.post(`/auth/login`, { email, password })
-    const { access_token, nombre, rol } = res.data
-    const usuarioData = { nombre, email, rol }
+    const { access_token, nombre, rol, id } = res.data
+    const usuarioData = { nombre, email, rol, id }
     setToken(access_token)
     setUsuario(usuarioData)
     localStorage.setItem('arrels_token', access_token)
