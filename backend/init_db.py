@@ -1,8 +1,21 @@
-# ── init_db.py — Crear usuarios iniciales si no existen ──────────
-# Ejecutar una vez: python init_db.py
+# ── init_db.py — Crear tablas e insertar usuarios iniciales ─────
+# Ejecutar: python init_db.py
+from database import SessionLocal, Base, engine
 
-from database import SessionLocal
+# Importar TODOS los modelos para que SQLAlchemy los registre en Base.metadata
 from models.usuario import Usuario
+from models.parcela import Parcela
+from models.producto import Producto
+from models.venta import Venta, LineaVenta
+from models.fichaje import Fichaje
+from models.alquiler import Alquiler
+from models.aportacion import Aportacion
+from models.mensaje import Mensaje
+from models.plan_accion import PlanAccion
+from models.apero import Apero
+from models.anotacion import Anotacion
+from models.lectura_sensor import LecturaSensor
+
 from auth import hash_password
 
 USUARIOS_INICIALES = [
@@ -15,6 +28,11 @@ USUARIOS_INICIALES = [
 ]
 
 def init():
+    # 1. Crear tablas según los modelos actuales
+    Base.metadata.create_all(bind=engine)
+    print("📦 Tablas creadas/verificadas según los modelos actuales.")
+
+    # 2. Insertar usuarios iniciales si no existen
     db = SessionLocal()
     creados = 0
     for u in USUARIOS_INICIALES:
@@ -24,7 +42,7 @@ def init():
                 nombre=u["nombre"],
                 email=u["email"],
                 password=hash_password(u["password"]),
-                rol=u["rol"]
+                rol=u["rol"],
             )
             db.add(usuario)
             creados += 1
