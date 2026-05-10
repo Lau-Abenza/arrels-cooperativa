@@ -16,8 +16,12 @@ export default function Inicio() {
   return (
     <LayoutPublico>
       {/* Hero */}
-      <section className="bg-[#1c2b1a] text-white py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section
+        className="relative text-white py-24 px-6 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/hero-campo.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-[#1c2b1a]/80" />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <span className="inline-block bg-[#2d4a1e] text-[#8ab89a] text-sm font-medium
                            px-4 py-1.5 rounded-full mb-6">
             🌿 Cooperativa Agrícola de Agost, Alicante

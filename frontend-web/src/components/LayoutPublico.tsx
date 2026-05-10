@@ -11,8 +11,11 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <button onClick={() => navigate('/inicio')} className="flex items-center gap-2">
-            <span className="text-xl font-bold text-[#4a7c59]">ARRELS</span>
-            <span className="text-[#6b8c5e] text-sm hidden sm:block">Cooperativa Agrícola</span>
+            <img
+              src="/arrels-logo-mono-clara.png"
+              alt="Arrels Cooperativa Agrícola"
+              className="h-10 w-auto"
+            />
           </button>
 
           {/* Nav */}
@@ -60,7 +63,11 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
         <div className="max-w-7xl mx-auto px-6 py-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="text-white font-bold mb-3">ARRELS</h3>
+              <img
+                src="/arrels-logo-principal-color.png"
+                alt="Arrels"
+                className="h-12 w-auto mb-3"
+              />
               <p className="text-sm leading-relaxed">
                 Cooperativa agrícola de Agost, Alicante. Productos de calidad directamente del campo a tu mesa.
               </p>
@@ -78,12 +85,12 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
               <div className="text-sm space-y-1">
                 <p>📍 Agost, Alicante</p>
                 <p>📧 info@arrels.coop</p>
-                <p>📞 965 XX XX XX</p>
+                <p>📞 965 00 00 00</p>
               </div>
             </div>
           </div>
           <div className="border-t border-[#2d4a1e] pt-6 text-center text-xs">
-            <p>© 2025 Arrels Cooperativa Agrícola · Todos los derechos reservados</p>
+            <p>© 2026 Arrels Cooperativa Agrícola · Todos los derechos reservados</p>
           </div>
         </div>
       </footer>
