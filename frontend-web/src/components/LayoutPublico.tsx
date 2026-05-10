@@ -14,7 +14,7 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
             <img
               src="/arrels-logo-mono-clara.png"
               alt="Arrels Cooperativa Agrícola"
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </button>
 
