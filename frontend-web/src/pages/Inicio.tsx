@@ -189,8 +189,12 @@ export default function Inicio() {
       </section>
 
       {/* CTA final */}
-      <section className="bg-[#e07a30] py-16 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
+      <section
+        className="relative py-16 px-6 text-center bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/envasado.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-[#e07a30]/90" />
+        <div className="relative z-10 max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-4">
             ¿Eres agricultor o quieres ser socio?
           </h2>
@@ -200,7 +204,7 @@ export default function Inicio() {
           <button
             onClick={() => navigate('/login')}
             className="bg-white text-[#e07a30] hover:bg-orange-50
-                       px-8 py-3.5 rounded-xl font-bold transition-colors"
+                        px-8 py-3.5 rounded-xl font-bold transition-colors"
           >
             Solicitar acceso →
           </button>

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LayoutPublico from '../components/LayoutPublico'
-import axios from 'axios'
 
 export default function SobreNosotros() {
   const navigate = useNavigate()
@@ -19,7 +18,6 @@ export default function SobreNosotros() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setEnviando(true)
-    // Simulamos envío — en producción conectaría con un endpoint de contacto
     await new Promise(resolve => setTimeout(resolve, 1000))
     setEnviado(true)
     setEnviando(false)
@@ -27,13 +25,17 @@ export default function SobreNosotros() {
 
   return (
     <LayoutPublico>
-      {/* Hero */}
-      <section className="bg-[#1c2b1a] text-white py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Hero con imagen de fondo */}
+      <section
+        className="relative text-white py-16 px-6 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/almazara.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-[#1c2b1a]/80" />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Sobre Arrels</h1>
           <p className="text-[#8ab89a] text-lg max-w-2xl mx-auto">
-            Somos una cooperativa agrícola digital de Agost, Alicante. 
-            Unimos tradición y tecnología para poner en valor los productos 
+            Somos una cooperativa agrícola digital de Agost, Alicante.
+            Unimos tradición y tecnología para poner en valor los productos
             de nuestros agricultores.
           </p>
         </div>
@@ -46,13 +48,13 @@ export default function SobreNosotros() {
             <h2 className="text-3xl font-bold text-[#1c2b1a] mb-4">Nuestra historia</h2>
             <p className="text-slate-600 leading-relaxed mb-4">
               Arrels nació de la necesidad de modernizar la gestión de la cooperativa
-              agrícola de la localidad. Con más de 50 socios agricultores y más de 200 
-              hectáreas de cultivo entre Agost, y otros municipios, gestionamos la producción 
+              agrícola de la localidad. Con más de 50 socios agricultores y más de 200
+              hectáreas de cultivo entre Agost, y otros municipios, gestionamos la producción
               de almendras, aceite de oliva, vino y productos hortícolas.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              Nuestra plataforma digital permite a los agricultores gestionar sus parcelas, 
-              registrar anotaciones de campo, recibir planes de acción del ingeniero agrónomo 
+              Nuestra plataforma digital permite a los agricultores gestionar sus parcelas,
+              registrar anotaciones de campo, recibir planes de acción del ingeniero agrónomo
               y vender sus productos directamente a través de nuestra tienda online.
             </p>
           </div>
@@ -92,27 +94,37 @@ export default function SobreNosotros() {
         </div>
 
         {/* Equipo */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#1c2b1a] mb-8 text-center">Nuestro equipo</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { nombre: 'Josep Miralles', cargo: 'Director', emoji: '👨‍💼' },
-              { nombre: 'Maria Antònia Pérez', cargo: 'Ingeniera Agrónoma', emoji: '👩‍🔬' },
-              { nombre: 'Pau Giménez', cargo: 'Trabajador', emoji: '👨‍🌾' },
-              { nombre: 'Neus Carbonell', cargo: 'Trabajadora', emoji: '👩‍🌾' },
-            ].map(({ nombre, cargo, emoji }) => (
-              <div key={nombre} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-center">
-                <span className="text-5xl mb-3 block">{emoji}</span>
-                <h3 className="font-bold text-slate-800">{nombre}</h3>
-                <p className="text-[#4a7c59] text-sm font-medium mt-1">{cargo}</p>
-              </div>
-            ))}
+        <div
+          className="mb-16 rounded-2xl p-10 bg-cover bg-center relative overflow-hidden"
+          style={{ backgroundImage: "url('/vinalopo.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-[#1c2b1a]/70 rounded-2xl" />
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">Nuestro equipo</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { nombre: 'Josep Miralles', cargo: 'Director'},
+                { nombre: 'Maria Antònia Pérez', cargo: 'Ingeniera Agrónoma'},
+                { nombre: 'Pau Giménez', cargo: 'Trabajador'},
+                { nombre: 'Neus Carbonell', cargo: 'Trabajadora'},
+              ].map(({ nombre, cargo }) => (
+                <div key={nombre} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20">
+                  <h3 className="font-bold text-white text-lg">{nombre}</h3>
+                  <p className="text-[#8ab89a] text-sm font-medium mt-1">{cargo}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Formulario contacto/solicitud */}
-      <section className="bg-[#f4f1ea] py-16 px-6">
+      <section
+        className="relative py-16 px-6 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/vinalopo.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-[#f4f1ea]/90" />
+        <div className="relative z-10">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-[#1c2b1a] mb-2 text-center">
             ¿Quieres unirte a Arrels?
@@ -126,7 +138,7 @@ export default function SobreNosotros() {
               <span className="text-5xl mb-4 block">✅</span>
               <h3 className="font-bold text-[#1c2b1a] text-xl mb-2">¡Solicitud enviada!</h3>
               <p className="text-slate-600 mb-6">
-                Hemos recibido tu solicitud. Nos pondremos en contacto contigo 
+                Hemos recibido tu solicitud. Nos pondremos en contacto contigo
                 en un plazo de 48 horas.
               </p>
               <button
@@ -210,6 +222,7 @@ export default function SobreNosotros() {
               </p>
             </form>
           )}
+        </div>
         </div>
       </section>
     </LayoutPublico>

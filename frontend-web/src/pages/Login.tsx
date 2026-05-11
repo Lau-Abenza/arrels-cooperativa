@@ -25,29 +25,29 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1c2b1a] flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
+    <div
+      className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: "url('/bodega.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-[#1c2b1a]/60" />
+      <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-[#4a7c59] tracking-tight">
-            ARRELS
-          </h1>
+          <img
+            src="/arrels-logo-principal-color.png"
+            alt="Arrels Cooperativa Agrícola"
+            className="h-16 w-auto mx-auto mb-2"
+          />
           <p className="text-[#8ab89a] mt-1 text-sm">
             Cooperativa Agrícola Digital
           </p>
         </div>
-
-        {/* Card */}
         <div className="bg-[#f4f1ea] rounded-2xl p-8 shadow-2xl">
           <h2 className="text-xl font-bold text-[#1c2b1a] mb-6">
             Acceder al sistema
           </h2>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-[#334155] mb-1">
-                Email
-              </label>
+              <label className="block text-sm font-medium text-[#334155] mb-1">Email</label>
               <input
                 type="email"
                 value={email}
@@ -60,11 +60,8 @@ export default function Login() {
                 placeholder="tu@email.com"
               />
             </div>
-
             <div>
-              <label className="block text-sm font-medium text-[#334155] mb-1">
-                Contraseña
-              </label>
+              <label className="block text-sm font-medium text-[#334155] mb-1">Contraseña</label>
               <input
                 type="password"
                 value={password}
@@ -77,14 +74,11 @@ export default function Login() {
                 placeholder="••••••••"
               />
             </div>
-
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3
-                              text-red-700 text-sm">
+              <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-700 text-sm">
                 {error}
               </div>
             )}
-
             <button
               type="submit"
               disabled={cargando}
@@ -96,8 +90,7 @@ export default function Login() {
             </button>
           </form>
         </div>
-
-        <p className="text-center text-[#6b8c5e] text-xs mt-6">
+        <p className="text-center text-[#8ab89a] text-xs mt-6">
           Arrels © 2026 · Cooperativa Agrícola Digital
         </p>
       </div>
