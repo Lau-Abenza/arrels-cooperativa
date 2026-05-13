@@ -22,10 +22,12 @@ import TiendaPublica from './pages/TiendaPublica'
 import Blog from './pages/Blog'
 import SobreNosotros from './pages/SobreNosotros'
 import PoliticaPrivacidad from './pages/PoliticaPrivacidad'
+import BlogDetalle from './pages/BlogDetalle'
 import './index.css'
 import './styles/main.scss'
 import axios from 'axios'
 import { API_URL } from './config'
+
 
 axios.defaults.baseURL = API_URL
 
@@ -122,6 +124,9 @@ function App() {
         />
         <Route path="/privacidad" element={
           <PoliticaPrivacidad />} 
+        />
+        <Route path='/blog/:id' element={
+          <BlogDetalle />}
         />
       </Routes>
     </BrowserRouter>

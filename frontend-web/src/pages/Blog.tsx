@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import LayoutPublico from '../components/LayoutPublico'
 
 const ARTICULOS = [
-  { id: 1, titulo: 'Guía de poda del almendro: cuándo y cómo hacerlo', categoria: 'Técnicas de cultivo', fecha: '15 marzo 2026', resumen: 'La poda del almendro es fundamental para obtener buenas cosechas. Explicamos los momentos clave y técnicas efectivas para agricultores de Alicante.', emoji: '🌳', tiempo: '5 min' },
-  { id: 2, titulo: 'Tratamientos fitosanitarios permitidos en cultivos ecológicos', categoria: 'Fitosanitarios', fecha: '8 marzo 2026', resumen: 'Guía actualizada con los productos fitosanitarios autorizados para agricultura ecológica según la normativa vigente del Ministerio de Agricultura.', emoji: '🌿', tiempo: '8 min' },
-  { id: 3, titulo: 'Previsión meteorológica para la comarca: riesgos de helada', categoria: 'Meteorología', fecha: '1 marzo 2026', resumen: 'Análisis de las previsiones meteorológicas y recomendaciones para proteger los cultivos frente a las heladas tardías.', emoji: '🌡️', tiempo: '4 min' },
-  { id: 4, titulo: 'Cómo interpretar el análisis de suelo de tu parcela', categoria: 'Técnicas de cultivo', fecha: '22 febrero 2026', resumen: 'El análisis de suelo es la base de una fertilización correcta. Te explicamos cómo leer los valores de pH, materia orgánica y nutrientes.', emoji: '🧪', tiempo: '6 min' },
-  { id: 5, titulo: 'Normativa de la PAC 2026: lo que necesitas saber', categoria: 'Normativa', fecha: '15 febrero 2026', resumen: 'Resumen de los principales cambios de la Política Agraria Común para 2025 y cómo afectan a los agricultores de la Comunitat Valenciana.', emoji: '📋', tiempo: '10 min' },
-  { id: 6, titulo: 'Riego por goteo: eficiencia y ahorro de agua en verano', categoria: 'Riego', fecha: '8 febrero 2026', resumen: 'El riego por goteo puede reducir el consumo de agua hasta un 50%. Guía práctica para instalar y programar tu sistema.', emoji: '💧', tiempo: '7 min' },
+  { id: 1, titulo: 'Guía de poda del almendro: cuándo y cómo hacerlo', categoria: 'Técnicas de cultivo', fecha: '15 marzo 2026', resumen: 'La poda del almendro es fundamental para obtener buenas cosechas. Explicamos los momentos clave y técnicas efectivas para agricultores de Alicante.', imagen: '/poda.jpg', tiempo: '5 min' },
+  { id: 2, titulo: 'Tratamientos fitosanitarios permitidos en cultivos ecológicos', categoria: 'Fitosanitarios', fecha: '8 marzo 2026', resumen: 'Guía actualizada con los productos fitosanitarios autorizados para agricultura ecológica según la normativa vigente del Ministerio de Agricultura.', imagen: '/verde.jpg', tiempo: '8 min' },
+  { id: 3, titulo: 'Previsión meteorológica para la comarca: riesgos de helada', categoria: 'Meteorología', fecha: '1 marzo 2026', resumen: 'Análisis de las previsiones meteorológicas y recomendaciones para proteger los cultivos frente a las heladas tardías.', imagen: '/almendrosflor.jpg', tiempo: '4 min' },
+  { id: 4, titulo: 'Cómo interpretar el análisis de suelo de tu parcela', categoria: 'Técnicas de cultivo', fecha: '22 febrero 2026', resumen: 'El análisis de suelo es la base de una fertilización correcta. Te explicamos cómo leer los valores de pH, materia orgánica y nutrientes.', imagen: '/almendrosbancal.jpg', tiempo: '6 min' },
+  { id: 5, titulo: 'Normativa de la PAC 2026: lo que necesitas saber', categoria: 'Normativa', fecha: '15 febrero 2026', resumen: 'Resumen de los principales cambios de la Política Agraria Común para 2026 y cómo afectan a los agricultores de la Comunitat Valenciana.', imagen: '/cosechadoras.jpg', tiempo: '10 min' },
+  { id: 6, titulo: 'Riego por goteo: eficiencia y ahorro de agua en verano', categoria: 'Riego', fecha: '8 febrero 2026', resumen: 'El riego por goteo puede reducir el consumo de agua hasta un 50%. Guía práctica para instalar y programar tu sistema.', imagen: '/vinyedo.jpg', tiempo: '7 min' },
+  { id: 7, titulo: 'La uva embolsada del Vinalopó: tradición y calidad', categoria: 'Productos', fecha: '1 febrero 2026', resumen: 'La IGP Uva de Mesa Embolsada del Vinalopó es uno de los productos más singulares de nuestra comarca. Descubre su proceso de cultivo y certificación.', imagen: '/vinalopo.jpg', tiempo: '5 min' },
+  { id: 8, titulo: 'Variedades de almendra autóctona de Alicante', categoria: 'Productos', fecha: '20 enero 2026', resumen: 'Marcona, Largueta, Comune... Conoce las variedades de almendra más cultivadas en Agost y sus características.', imagen: '/almendras.jpg', tiempo: '6 min' },
+  { id: 9, titulo: 'Historia de la cooperativa: 60 años de agricultura en Agost', categoria: 'Cooperativa', fecha: '10 enero 2026', resumen: 'Desde 1965, la cooperativa ha sido el eje de la vida agrícola de Agost. Repasamos su historia a través de imágenes y testimonios.', imagen: '/foto-historica.jpg', tiempo: '8 min' },
 ]
 
-const CATEGORIAS = ['Todos', 'Técnicas de cultivo', 'Fitosanitarios', 'Meteorología', 'Normativa', 'Riego']
+const CATEGORIAS = ['Todos', 'Técnicas de cultivo', 'Fitosanitarios', 'Meteorología', 'Normativa', 'Riego', 'Productos', 'Cooperativa']
 
 const RECURSOS = [
   { label: 'Ministerio de Agricultura', url: 'https://www.mapa.gob.es', desc: 'Normativa, ayudas y estadísticas oficiales' },
@@ -68,8 +71,8 @@ export default function Blog() {
               {articulosFiltrados.map(a => (
                 <article key={a.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all p-6">
                   <div className="flex gap-4">
-                    <div className="w-14 h-14 bg-[#eef4f0] rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
-                      {a.emoji}
+                    <div className="w-24 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                      <img src={a.imagen} alt={a.titulo} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -77,9 +80,19 @@ export default function Blog() {
                         <span className="text-xs text-slate-400">{a.fecha}</span>
                         <span className="text-xs text-slate-400">· {a.tiempo} lectura</span>
                       </div>
-                      <h2 className="font-bold text-slate-800 mb-2 leading-snug">{a.titulo}</h2>
+                      <h2 
+                        onClick={() => navigate(`/blog/${a.id}`)} 
+                        className="font-bold text-slate-800 mb-2 leading-snug"
+                      >
+                        {a.titulo}
+                      </h2>
                       <p className="text-slate-500 text-sm leading-relaxed mb-3">{a.resumen}</p>
-                      <button className="text-[#4a7c59] text-sm font-medium hover:underline">Leer más →</button>
+                      <button 
+                        onClick={() => navigate(`/blog/${a.id}`)}
+                        className="text-[#4a7c59] text-sm font-medium hover:underline"
+                      >
+                          Leer más →
+                      </button>
                     </div>
                   </div>
                 </article>
