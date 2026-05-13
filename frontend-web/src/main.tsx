@@ -20,11 +20,12 @@ import Usuarios from './pages/Usuarios'
 import Inicio from './pages/Inicio'
 import TiendaPublica from './pages/TiendaPublica'
 import Blog from './pages/Blog'
+import SobreNosotros from './pages/SobreNosotros'
+import PoliticaPrivacidad from './pages/PoliticaPrivacidad'
 import './index.css'
 import './styles/main.scss'
 import axios from 'axios'
 import { API_URL } from './config'
-import SobreNosotros from './pages/SobreNosotros'
 
 axios.defaults.baseURL = API_URL
 
@@ -118,6 +119,9 @@ function App() {
         />
         <Route path="/sobre-nosotros" element={
           <SobreNosotros />} 
+        />
+        <Route path="/privacidad" element={
+          <PoliticaPrivacidad />} 
         />
       </Routes>
     </BrowserRouter>

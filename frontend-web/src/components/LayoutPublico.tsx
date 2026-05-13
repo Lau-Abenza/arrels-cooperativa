@@ -17,7 +17,6 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
               className="h-14 w-auto"
             />
           </button>
-
           {/* Nav */}
           <nav className="hidden md:flex items-center gap-6">
             {[
@@ -35,7 +34,6 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
               </button>
             ))}
           </nav>
-
           {/* CTA */}
           <div className="flex items-center gap-3">
             <button
@@ -75,8 +73,19 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
             <div>
               <h3 className="text-white font-bold mb-3">Enlaces</h3>
               <div className="space-y-2 text-sm">
-                {['Tienda', 'Blog', 'Sobre nosotros', 'Contacto'].map(l => (
-                  <p key={l} className="hover:text-white cursor-pointer transition-colors">{l}</p>
+                {[
+                  { label: 'Tienda', path: '/tienda' },
+                  { label: 'Blog', path: '/blog' },
+                  { label: 'Sobre nosotros', path: '/sobre-nosotros' },
+                  { label: 'Política de privacidad', path: '/privacidad' },
+                ].map(({ label, path }) => (
+                  <p
+                    key={path}
+                    onClick={() => navigate(path)}
+                    className="hover:text-white cursor-pointer transition-colors"
+                  >
+                    {label}
+                  </p>
                 ))}
               </div>
             </div>
@@ -89,8 +98,23 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
               </div>
             </div>
           </div>
-          <div className="border-t border-[#2d4a1e] pt-6 text-center text-xs">
+          <div className="border-t border-[#2d4a1e] pt-6 text-center text-xs space-y-1">
             <p>© 2026 Arrels Cooperativa Agrícola · Todos los derechos reservados</p>
+            <p>
+              <span
+                onClick={() => navigate('/privacidad')}
+                className="hover:text-white cursor-pointer transition-colors underline"
+              >
+                Política de Privacidad
+              </span>
+              {' · '}
+              <span
+                onClick={() => navigate('/sobre-nosotros')}
+                className="hover:text-white cursor-pointer transition-colors underline"
+              >
+                Contacto
+              </span>
+            </p>
           </div>
         </div>
       </footer>

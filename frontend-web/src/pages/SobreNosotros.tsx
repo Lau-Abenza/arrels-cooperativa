@@ -218,8 +218,14 @@ export default function SobreNosotros() {
               </button>
 
               <p className="text-xs text-slate-400 text-center mt-3">
-                Tus datos serán tratados conforme a nuestra política de privacidad.
-              </p>
+                Tus datos serán tratados conforme a nuestra {' '}
+                <span
+                  onClick={() => navigate('/privacidad')}
+                  className='undeline cursor-pointer hover:text-slate-600'
+                >
+                  política de privacidad
+                </span>.
+                  </p>
             </form>
           )}
         </div>
