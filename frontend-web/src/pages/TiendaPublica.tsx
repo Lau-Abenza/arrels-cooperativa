@@ -68,14 +68,19 @@ export default function TiendaPublica() {
 
   const getEmoji = (categoria: string) => {
     const emojis: Record<string, string> = {
-      aceite: '🫒',
-      frutos_secos: '🌰',
-      conservas: '🥫',
-      semillas: '🌱',
-      herramientas: '🔧',
-      abonos: '🌿',
-      vino: '🍷',
-      miel: '🍯',
+      'aceites': '🫒',
+      'frutos secos': '🌰',
+      'conservas': '🥫',
+      'semillas': '🌱',
+      'frutas': '🍊',
+      'verduras': '🥦',
+      'vinos': '🍷',
+      'miel': '🍯',
+      'abonos': '🌿',
+      'fitosanitarios': '🧴',
+      'arbolitos': '🌳',
+      'herramientas': '🔧',
+      'equipacion': '🧤',
     }
     return emojis[categoria] || '📦'
   }

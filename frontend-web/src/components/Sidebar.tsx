@@ -64,7 +64,7 @@ export default function Sidebar() {
           const activo = location.pathname === item.path
           return (
             <button
-              key={item.path}
+              key={item.label}
               onClick={() => navigate(item.path)}
               className={`
                 w-full flex items-center gap-3 px-3 py-2.5 rounded-xl
