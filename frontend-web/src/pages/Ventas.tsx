@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import Layout from '../components/Layout'
+import { useAuth } from '../context/AuthContext'
 
 interface LineaVenta {
   id: number
@@ -32,6 +33,8 @@ interface Producto {
 
 export default function Ventas() {
   const queryClient = useQueryClient()
+  const { usuario } = useAuth()
+  const esSocio = usuario?.rol === 'socio'
   const [mostrarForm, setMostrarForm] = useState(false)
   const [socioId, setSocioId] = useState<number | ''>('')
   const [lineas, setLineas] = useState<{ producto_id: number, cantidad: number }[]>([
@@ -42,7 +45,11 @@ export default function Ventas() {
     queryKey: ['ventas'],
     queryFn: async () => {
       const res = await axios.get('/ventas/')
-      return res.data as Venta[]
+      const todasVentas = res.data as Venta[]
+      if (esSocio) {
+        return todasVentas.filter(v => v.socio_id === usuario?.id)
+      }
+      return todasVentas
     }
   })
 
@@ -82,16 +89,22 @@ export default function Ventas() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-[#1c2b1a]">🛒 Ventas</h2>
-            <p className="text-slate-500 text-sm mt-1">{ventas.length} ventas registradas</p>
+            <h2 className="text-2xl font-bold text-[#1c2b1a]">
+              {esSocio ? '🛒 Mis Compras' : '🛒 Ventas'}
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              {esSocio ? `${ventas.length} compras realizadas` : `${ventas.length} ventas registradas`}
+            </p>
           </div>
-          <button
-            onClick={() => setMostrarForm(true)}
-            className="bg-[#4a7c59] hover:bg-[#3d6b4e] text-white
-                       px-4 py-2 rounded-xl text-sm font-semibold transition-colors"
-          >
-            + Nueva venta
-          </button>
+          {!esSocio && (
+            <button
+              onClick={() => setMostrarForm(true)}
+              className="bg-[#4a7c59] hover:bg-[#3d6b4e] text-white
+                          px-4 py-2 rounded-xl text-sm font-semibold transition-colors"
+            >
+              + Nueva venta
+            </button>
+          )}
         </div>
 
         {/* Formulario nueva venta */}
