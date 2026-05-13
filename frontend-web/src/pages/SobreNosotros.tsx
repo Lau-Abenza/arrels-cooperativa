@@ -28,9 +28,9 @@ export default function SobreNosotros() {
       {/* Hero con imagen de fondo */}
       <section
         className="relative text-white py-16 px-6 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/almazara.jpg')" }}
+        style={{ backgroundImage: "url('/almendrosflor.jpg')" }}
       >
-        <div className="absolute inset-0 bg-[#1c2b1a]/80" />
+        <div className="absolute inset-0 bg-[#1c2b1a]/60" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Sobre Arrels</h1>
           <p className="text-[#8ab89a] text-lg max-w-2xl mx-auto">
@@ -121,9 +121,9 @@ export default function SobreNosotros() {
       {/* Formulario contacto/solicitud */}
       <section
         className="relative py-16 px-6 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/vinalopo.jpg')" }}
+        style={{ backgroundImage: "url('/parra-uva.jpg')" }}
       >
-        <div className="absolute inset-0 bg-[#f4f1ea]/90" />
+        <div className="absolute inset-0 bg-[#f4f1ea]/80" />
         <div className="relative z-10">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-[#1c2b1a] mb-2 text-center">
