@@ -18,7 +18,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://arrels-cooperativa.vercel.app"
+        "http://localhost:5174",
+        "https://arrels-cooperativa.vercel.app",
+        "https://arrels-cooperativa-git-main-lau-abenzas-projects.vercel.app",
+        "https://arrels-cooperativa-8uq79pmq1-lau-abenzas-projects.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
