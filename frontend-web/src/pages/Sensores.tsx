@@ -34,7 +34,7 @@ export default function Sensores() {
   const { data: lecturas = [], isLoading } = useQuery({
     queryKey: ['sensores', deviceId],
     queryFn: async () => {
-      const res = await axios.get(`/api/sensores/historico/${deviceId}?limite=24`)
+      const res = await axios.get(`/sensores/historico/${deviceId}?limite=24`)
       return res.data as Lectura[]
     },
     refetchInterval: 30000
