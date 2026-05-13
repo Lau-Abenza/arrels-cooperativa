@@ -41,9 +41,12 @@ export default function Sidebar() {
   return (
     <aside className="w-64 min-h-screen bg-[#1c2b1a] flex flex-col flex-shrink-0">
       {/* Logo */}
-      <div className="px-6 py-5 border-b border-[#2d4a1e]">
-        <h1 className="text-xl font-bold text-[#4a7c59] tracking-tight">ARRELS</h1>
-        <p className="text-[#6b8c5e] text-xs mt-0.5">Cooperativa Agrícola</p>
+      <div className="px-6 py-5 border-b border-[#2d4a1e] flex items-center justify-center">
+        <img
+          src="/arrels-logo-mono-clara.png"
+          alt="Arrels Cooperativa Agrícola"
+          className="h-16 w-auto"
+        />
       </div>
 
       {/* Usuario */}
