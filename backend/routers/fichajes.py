@@ -82,6 +82,27 @@ def mis_fichajes(
         "notas": f.notas
     } for f in fichajes]
 
+@router.get("/semana", response_model=List[FichajeOut])
+def fichajes_semana(
+    db: Session = Depends(get_db),
+    usuario = Depends(require_role("admin", "director", "trabajador"))
+):
+    from datetime import timedelta
+    hace_7_dias = datetime.now() - timedelta(days=7)
+    fichajes = db.query(Fichaje).filter(
+        Fichaje.timestamp >= hace_7_dias
+    ).order_by(Fichaje.timestamp.desc()).limit(200).all()
+    return [{
+        "id": f.id,
+        "usuario_id": f.usuario_id,
+        "usuario_nombre": f.usuario.nombre,
+        "tipo": f.tipo,
+        "timestamp": f.timestamp,
+        "lat": f.lat,
+        "lon": f.lon,
+        "notas": f.notas
+    } for f in fichajes]
+
 @router.get("/usuario/{usuario_id}", response_model=List[FichajeOut])
 def fichajes_usuario(
     usuario_id: int,
