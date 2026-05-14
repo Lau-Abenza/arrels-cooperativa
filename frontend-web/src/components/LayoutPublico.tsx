@@ -14,7 +14,7 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
             <img
               src="/arrels-logo-mono-clara.png"
               alt="Arrels Cooperativa Agrícola"
-              className="h-14 w-auto"
+              className="h-22 w-auto"
             />
           </button>
           {/* Nav */}
@@ -28,7 +28,7 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
               <button
                 key={path}
                 onClick={() => navigate(path)}
-                className="text-[#8ab89a] hover:text-white transition-colors text-sm font-medium"
+                className="text-[#8ab89a] hover:text-white transition-colors text-base font-medium"
               >
                 {label}
               </button>
@@ -62,9 +62,9 @@ export default function LayoutPublico({ children }: { children: ReactNode }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
               <img
-                src="/arrels-logo-principal-color.png"
+                src="/arrels-logo-mono-clara.png"
                 alt="Arrels"
-                className="h-12 w-auto mb-3"
+                className="h-22 w-auto mb-3"
               />
               <p className="text-sm leading-relaxed">
                 Cooperativa agrícola de Agost, Alicante. Productos de calidad directamente del campo a tu mesa.

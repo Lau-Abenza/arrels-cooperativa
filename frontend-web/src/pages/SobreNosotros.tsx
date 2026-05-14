@@ -93,6 +93,15 @@ export default function SobreNosotros() {
           </div>
         </div>
 
+        {/* Logo centrado */}
+        <div className="flex justify-center mb-12">
+          <img
+            src="/arrels-logo-principal-color.png"
+            alt="Arrels"
+            className="h-40 w-auto opacity-90"
+          />
+        </div>
+
         {/* Equipo */}
         <div
           className="mb-16 rounded-2xl p-10 bg-cover bg-center relative overflow-hidden"

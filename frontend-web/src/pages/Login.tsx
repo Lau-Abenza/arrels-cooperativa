@@ -32,12 +32,14 @@ export default function Login() {
       <div className="absolute inset-0 bg-[#1c2b1a]/60" />
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
-          <img
-            src="/arrels-logo-principal-color.png"
-            alt="Arrels Cooperativa Agrícola"
-            className="h-16 w-auto mx-auto mb-2"
-          />
-          <p className="text-[#8ab89a] mt-1 text-sm">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 inline-block mb-2">
+            <img
+              src="/arrels-logo-principal-color.png"
+              alt="Arrels Cooperativa Agrícola"
+              className="h-40 w-auto mx-auto"
+            />
+          </div>
+          <p className="text-white mt-1 text-sm font-medium">
             Cooperativa Agrícola Digital
           </p>
         </div>
