@@ -53,7 +53,11 @@ export default function Parcelas() {
     queryKey: ['parcelas'],
     queryFn: async () => {
       const res = await axios.get('/parcelas/')
-      return res.data as Parcela[]
+      const todas = res.data as Parcela[]
+      if (usuario?.rol === 'socio') {
+        return todas.filter(p => p.agricultor_id === usuario.id)
+      }
+      return todas
     }
   })
 
@@ -281,13 +285,18 @@ export default function Parcelas() {
                 lon={p.lon}
                 editable={true}
                 onUbicacionChange={(lat, lon) => {
-                  console.log('Guardando coordenadas:', lat, lon, 'para parcela:', p.id)
-                  axios.put(`/parcelas/${p.id}`, { lat, lon })
-                    .then((res) => {
-                    console.log('Respuesta:', res.data)
+                  axios.put(`/parcelas/${p.id}`, {
+                    nombre: p.nombre,
+                    superficie_ha: p.superficie_ha,
+                    cultivo: p.cultivo,
+                    municipio: p.municipio || '',
+                    descripcion: p.descripcion || '',
+                    agricultor_id: p.agricultor_id,
+                    lat,
+                    lon,
+                  }).then(() => {
                     queryClient.invalidateQueries({ queryKey: ['parcelas'] })
-                  })
-                  .catch(err => console.error('Error:', err))
+                  }).catch(err => console.error('Error:', err))
                 }}
               />
             </div>
