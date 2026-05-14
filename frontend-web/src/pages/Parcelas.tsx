@@ -269,7 +269,7 @@ export default function Parcelas() {
             </table>
           </div>
         )}
-        {parcelaMapaId && (() => {
+        {parcelaMapaId !== null && (() => {
           const p = parcelas.find(p => p.id === parcelaMapaId)
           if (!p) return null
           return (
